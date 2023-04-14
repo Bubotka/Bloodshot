@@ -93,11 +93,8 @@ public class Player : Entity
         if (IsWallDetected())
             return;
 
-        _dashUsageTimer -= Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _dashUsageTimer < 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.Instance.Dash.CanUseSkill())
         {
-            _dashUsageTimer = _dashCooldown;
             DashDiraction = Input.GetAxisRaw("Horizontal");
 
             if (DashDiraction == 0)
