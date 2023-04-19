@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,12 @@ public class Entity : MonoBehaviour
     public Rigidbody2D Rb { get; private set; }
 
     public EntityFX FX { get; private set; }
+
+    public SpriteRenderer Sr { get; private set; }
+
+    public CharacterStats Stats { get; private set; }
+
+    public CapsuleCollider2D Cd { get; private set; }
     #endregion
 
     [Header("Knockback info")]
@@ -31,6 +38,8 @@ public class Entity : MonoBehaviour
     public int FacingDir { get; private set; } = 1;
     protected bool _facingRight = true;
 
+    public event Action OnFlipped;
+
     protected virtual void Awake()
     {
 
@@ -41,6 +50,9 @@ public class Entity : MonoBehaviour
         FX = GetComponent<EntityFX>();
         Anim = GetComponentInChildren<Animator>();
         Rb = GetComponent<Rigidbody2D>();
+        Sr = GetComponentInChildren<SpriteRenderer>();
+        Stats = GetComponent<CharacterStats>();
+        Cd = GetComponent<CapsuleCollider2D>();
     }
     
     protected virtual void Update()
@@ -48,12 +60,10 @@ public class Entity : MonoBehaviour
 
     }
 
-    public virtual void Damage()
+    public virtual void DamageEffect()
     {
         FX.StartCoroutine("FlashFX");
         StartCoroutine("HitKnockback");
-
-        Debug.Log(gameObject.name + "was damaged");
     }
 
     protected virtual IEnumerator HitKnockback()
@@ -86,6 +96,9 @@ public class Entity : MonoBehaviour
         FacingDir *= -1;
         _facingRight = !_facingRight;
         transform.Rotate(0, 180, 0);
+
+        if(OnFlipped!=null)
+            OnFlipped();
     }
 
     public virtual void FlipController(float x)
@@ -115,5 +128,18 @@ public class Entity : MonoBehaviour
         FlipController(xVelocity);
     }
     #endregion
+
+    public void MakeTransparent(bool transparent)
+    {
+        if (transparent)
+            Sr.color = Color.clear;
+        else
+            Sr.color = Color.white;
+    }
+
+    public virtual void Die()
+    {
+
+    }
 
 }

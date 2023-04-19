@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class PlayerCounterAttackState : PlayerState
 {
+    private bool _canCreateClone;
+
     public PlayerCounterAttackState(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
     }
@@ -13,6 +12,7 @@ public class PlayerCounterAttackState : PlayerState
     {
         base.Enter();
 
+        _canCreateClone = true;
         stateTimer = player.counterAttackDuration;
         player.Anim.SetBool("SuccesfulCounterAttack", false);
     }
@@ -28,9 +28,9 @@ public class PlayerCounterAttackState : PlayerState
 
         player.SetZeroVelocity();
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(player.AttackCheck.position,player.AttackCheckRaduis);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(player.AttackCheck.position, player.AttackCheckRaduis);
 
-        foreach(var hit in colliders)
+        foreach (var hit in colliders)
         {
             if (hit.GetComponent<Enemy>() != null)
             {
@@ -38,8 +38,15 @@ public class PlayerCounterAttackState : PlayerState
                 {
                     stateTimer = 10;
                     player.Anim.SetBool("SuccesfulCounterAttack", true);
+
+                    if (_canCreateClone)
+                    {
+                        _canCreateClone = false;
+                        player.Skill.Clone.CreateCloneOnCounterAttack(hit.transform);
+                    }
+
                 }
-            }  
+            }
         }
 
         if (stateTimer < 0 || triggerCalled)

@@ -17,6 +17,7 @@ public class Enemy : Entity
     public float MoveSpeed;
     public float IdleStateDuration;
     public float BattleTime;
+    private float _defaultMoveSpeed;
 
     [Header("Attack info")]
     public float AttackDistance;
@@ -26,10 +27,13 @@ public class Enemy : Entity
 
     public EnemyStateMachine StateMachine { get; private set; }
 
+    public string LastAnimBoolName { get; private set; }
+
     protected override void Awake()
     {
         base.Awake();
         StateMachine = new EnemyStateMachine();
+        _defaultMoveSpeed = MoveSpeed;
     }
 
     protected override void Update()
@@ -40,6 +44,35 @@ public class Enemy : Entity
 
     }
 
+    public virtual void AssignLastAnimName(string _animBoolName)
+    {
+        LastAnimBoolName = _animBoolName;
+    }
+
+    public virtual void FreezeTime(bool timeFrozen)
+    {
+        if (timeFrozen)
+        {
+            MoveSpeed = 0;
+            Anim.speed = 0;
+        }
+        else
+        {
+            MoveSpeed = _defaultMoveSpeed;
+            Anim.speed = 1;
+        }
+    }
+
+    protected virtual IEnumerator FreezeTimeFor(float seconds)
+    {
+        FreezeTime(true);
+
+        yield return new WaitForSeconds(seconds);
+
+        FreezeTime(false);
+    }
+
+    #region Counter Attack  Window
     public virtual void OpenCounterAttackWindow()
     {
         canBeStunned = true;
@@ -51,7 +84,7 @@ public class Enemy : Entity
         canBeStunned = false;
         counterImage.SetActive(false);
     }
-
+    #endregion
     public virtual bool CanBeStunned()
     {
         if (canBeStunned)

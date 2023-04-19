@@ -8,12 +8,13 @@ public class Player : Entity
 
     [Header("Attack info")]
     public Vector2[] AttackMovement;
-    public float counterAttackDuration=0.2f;
+    public float counterAttackDuration = 0.2f;
 
 
     [Header("Move info")]
     public float MoveSpeed = 12f;
     public float JumpForce = 13f;
+    public float SwordReturnImpact = 7;
 
     [Header("Dash info")]
     [SerializeField] private float _dashCooldown;
@@ -22,6 +23,10 @@ public class Player : Entity
     public float DashDuration = 0.3f;
 
     public float DashDiraction { get; private set; }
+
+    public SkillManager Skill { get; private set; }
+
+    public GameObject Sword { get; private set; }
 
     #region States
     public PlayerStateMachine StateMachine { get; private set; }
@@ -42,7 +47,15 @@ public class Player : Entity
 
     public PlayerPrimaryAttackState PrimaryAttackState { get; private set; }
 
-    public PlayerCounterAttackState CounterAttackState { get; private set; } 
+    public PlayerCounterAttackState CounterAttackState { get; private set; }
+
+    public PlayerAimSwordState AimSwordState { get; private set; }
+
+    public PlayerCatchSwordState CatchSwordState { get; private set; }
+
+    public PlayerBlackHoleState BlackHole { get; private set; }
+
+    public PlayerDeadState DeadState { get; private set; }
     #endregion
 
     protected override void Awake()
@@ -61,11 +74,17 @@ public class Player : Entity
 
         PrimaryAttackState = new PlayerPrimaryAttackState(this, StateMachine, "Attack");
         CounterAttackState = new PlayerCounterAttackState(this, StateMachine, "CounterAttack");
+        AimSwordState = new PlayerAimSwordState(this, StateMachine, "AimSword");
+        CatchSwordState = new PlayerCatchSwordState(this, StateMachine, "CatchSword");
+        BlackHole = new PlayerBlackHoleState(this, StateMachine, "Jump");
+        DeadState = new PlayerDeadState(this, StateMachine, "Die");
     }
 
     protected override void Start()
     {
         base.Start();
+
+        Skill = SkillManager.Instance;
 
         StateMachine.Initialize(IdleState);
     }
@@ -76,6 +95,20 @@ public class Player : Entity
 
         StateMachine.CurrentState.Update();
         CheckForDashInput();
+
+        if (Input.GetKeyDown(KeyCode.F))
+            Skill.Crystal.CanUseSkill();
+    }
+
+    public void AssignNewSword(GameObject newSword)
+    {
+        Sword = newSword; 
+    }
+
+    public void CatchTheSword()
+    {
+        StateMachine.ChangeState(CatchSwordState);
+        Destroy(Sword);
     }
 
     public void AnimationTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
@@ -102,5 +135,12 @@ public class Player : Entity
 
             StateMachine.ChangeState(DashState);
         }
+    }
+
+    public override void Die()
+    {
+        base.Die();
+
+        StateMachine.ChangeState(DeadState);
     }
 }
