@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PlayerStats : CharacterStats
 {
     private Player _player;
@@ -16,8 +12,6 @@ public class PlayerStats : CharacterStats
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
-
-        _player.DamageEffect();
     }
 
     protected override void Die()

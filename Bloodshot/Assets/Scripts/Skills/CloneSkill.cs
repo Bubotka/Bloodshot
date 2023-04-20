@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CloneSkill : Skill
@@ -20,7 +19,7 @@ public class CloneSkill : Skill
     [Header("Crystal instead of clone")]
     public bool CrystallInsteadOfClone;
 
-    public void CreateClone(Transform clonePosition,Vector3 offset)
+    public void CreateClone(Transform clonePosition, Vector3 offset)
     {
         if (CrystallInsteadOfClone)
         {
@@ -28,10 +27,10 @@ public class CloneSkill : Skill
             return;
         }
 
-        GameObject newClone = Instantiate(_clonePrefab,player.transform.position,Quaternion.identity);
+        GameObject newClone = Instantiate(_clonePrefab, player.transform.position, Quaternion.identity);
 
         newClone.GetComponent<CloneSkillController>().SetupClone(clonePosition, _cloneDuration,
-            _canAttack, offset, FindClosestEnemy(newClone.transform), _canDuplicateClone, _chanceToDuplicate);
+            _canAttack, offset, FindClosestEnemy(newClone.transform), _canDuplicateClone, _chanceToDuplicate, player);
     }
 
     public void CreateCloneOnDashStart()
@@ -52,10 +51,10 @@ public class CloneSkill : Skill
             StartCoroutine(CreateCloneWhithDelay(enemyTransform, new Vector3(1 * player.FacingDir, 0)));
     }
 
-    private IEnumerator CreateCloneWhithDelay(Transform transform,Vector3 offset)
+    private IEnumerator CreateCloneWhithDelay(Transform transform, Vector3 offset)
     {
         yield return new WaitForSeconds(0.4f);
-            CreateClone(transform, offset);
-            
+        CreateClone(transform, offset);
+
     }
 }

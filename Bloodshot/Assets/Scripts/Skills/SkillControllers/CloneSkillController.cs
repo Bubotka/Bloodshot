@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CloneSkillController : MonoBehaviour
 {
     [SerializeField] private Transform _attackCheck;
-    [SerializeField] private float _attackCheckRadius=0.4f;
+    [SerializeField] private float _attackCheckRadius = 0.4f;
     [SerializeField] private float _colorLoosingSpeed;
+
+    private Player _player;
     private SpriteRenderer _sr;
     private float _cloneTimer;
     private Transform _closestEnemy;
@@ -32,29 +31,29 @@ public class CloneSkillController : MonoBehaviour
             _sr.color = new Color(1, 1, 1, _sr.color.a - (Time.deltaTime * _colorLoosingSpeed));
 
             if (_sr.color.a <= 0)
-                Destroy(gameObject); 
+                Destroy(gameObject);
         }
     }
 
-    public void SetupClone(Transform newTransform,float cloneDuration, bool canAttack,Vector3 offset,Transform closestEnemy, bool canDuplicate,float chanceToDuplicate)
+    public void SetupClone(Transform newTransform, float cloneDuration, bool canAttack, Vector3 offset, Transform closestEnemy, bool canDuplicate, float chanceToDuplicate, Player player)
     {
         if (canAttack)
             _anim.SetInteger("AttackNumber", Random.Range(1, 3));
 
-        transform.position = newTransform.position+offset;
+        transform.position = newTransform.position + offset;
         _cloneTimer = cloneDuration;
         _canDuplicateClone = canDuplicate;
         _closestEnemy = closestEnemy;
-       // Debug.Log(_closestEnemy);
         _chanceToDuplicate = chanceToDuplicate;
+        _player = player;
         FaceClosestTarget();
     }
 
     private void AnimationTrigger()
     {
-        _cloneTimer = -0.1f;  
+        _cloneTimer = -0.1f;
     }
-     
+
     private void AttackTrigger()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(_attackCheck.position, _attackCheckRadius);
@@ -63,7 +62,7 @@ public class CloneSkillController : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                hit.GetComponent<Enemy>().DamageEffect();
+                _player.Stats.DoDamage(hit.GetComponent<CharacterStats>());
 
                 if (_canDuplicateClone)
                 {
@@ -72,7 +71,7 @@ public class CloneSkillController : MonoBehaviour
                         SkillManager.Instance.Clone.CreateClone(hit.transform, new Vector3(.5f * _facingDir, 0));
                     }
                 }
-            }          
+            }
         }
     }
 

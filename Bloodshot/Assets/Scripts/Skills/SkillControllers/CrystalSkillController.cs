@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Principal;
 using UnityEngine;
 
 public class CrystalSkillController : MonoBehaviour
@@ -8,6 +5,7 @@ public class CrystalSkillController : MonoBehaviour
 
     private Animator _anim => GetComponent<Animator>();
     private CircleCollider2D _cd => GetComponent<CircleCollider2D>();
+    private Player _player;
 
     private float _crystalExistTimer;
     private bool _canGrow;
@@ -21,7 +19,7 @@ public class CrystalSkillController : MonoBehaviour
     [SerializeField] private LayerMask _whatIsEnemy;
 
     public void SetupCrystal(float crystalDuration, bool canExplode, bool canMove, float moveSpeed,
-        float growSpeed, float maxCrystaSize, Transform closestTarget)
+        float growSpeed, float maxCrystaSize, Transform closestTarget, Player player)
     {
         _crystalExistTimer = crystalDuration;
         _canExplode = canExplode;
@@ -30,6 +28,7 @@ public class CrystalSkillController : MonoBehaviour
         _growSpeed = growSpeed;
         _maxCrystalSize = maxCrystaSize;
         _closestTarget = closestTarget;
+        _player = player;
     }
 
     public void ChooseRandomEnemy()
@@ -73,7 +72,7 @@ public class CrystalSkillController : MonoBehaviour
         foreach (var hit in colliders)
         {
             if (hit.GetComponent<Enemy>() != null)
-                hit.GetComponent<Enemy>().DamageEffect();
+                _player.Stats.DoMagicalDamage(hit.GetComponent<CharacterStats>());
         }
     }
 

@@ -44,9 +44,21 @@ public class Enemy : Entity
 
     }
 
-    public virtual void AssignLastAnimName(string _animBoolName)
+    public virtual void AssignLastAnimName(string _animBoolName) => LastAnimBoolName = _animBoolName;
+
+    public override void SlowEntityBy(float slowPercentage, float slowDuration)
     {
-        LastAnimBoolName = _animBoolName;
+        MoveSpeed *= 1 - slowPercentage;
+        Anim.speed *= 1 - slowPercentage;
+
+        Invoke("ReturnDefaultSpeed", slowDuration);
+    }
+
+    protected override void ReturnDefaultSpeed()
+    {
+        base.ReturnDefaultSpeed();
+
+        MoveSpeed = _defaultMoveSpeed;
     }
 
     public virtual void FreezeTime(bool timeFrozen)

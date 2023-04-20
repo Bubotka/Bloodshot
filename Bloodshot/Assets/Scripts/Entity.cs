@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class Entity : MonoBehaviour
 {
@@ -11,7 +9,7 @@ public class Entity : MonoBehaviour
 
     public Rigidbody2D Rb { get; private set; }
 
-    public EntityFX FX { get; private set; }
+    public EntityFX Fx { get; private set; }
 
     public SpriteRenderer Sr { get; private set; }
 
@@ -47,24 +45,30 @@ public class Entity : MonoBehaviour
 
     protected virtual void Start()
     {
-        FX = GetComponent<EntityFX>();
+        Fx = GetComponent<EntityFX>();
         Anim = GetComponentInChildren<Animator>();
         Rb = GetComponent<Rigidbody2D>();
         Sr = GetComponentInChildren<SpriteRenderer>();
         Stats = GetComponent<CharacterStats>();
         Cd = GetComponent<CapsuleCollider2D>();
     }
-    
+
     protected virtual void Update()
     {
 
     }
 
-    public virtual void DamageEffect()
+    public virtual void SlowEntityBy(float slowPercentage, float slowDuration)
     {
-        FX.StartCoroutine("FlashFX");
-        StartCoroutine("HitKnockback");
+
     }
+
+    protected virtual void ReturnDefaultSpeed()
+    {
+        Anim.speed = 1;
+    }
+
+    public virtual void DamageImpact() => StartCoroutine("HitKnockback");
 
     protected virtual IEnumerator HitKnockback()
     {
@@ -86,7 +90,7 @@ public class Entity : MonoBehaviour
     {
         Gizmos.DrawLine(_groundCheck.position, new Vector3(_groundCheck.position.x, _groundCheck.position.y - _groundCheckDistance));
         Gizmos.DrawLine(_wallCheck.position, new Vector3(_wallCheck.position.x + _wallCheckDistance * FacingDir, _wallCheck.position.y));
-        Gizmos.DrawWireSphere(AttackCheck.position,AttackCheckRaduis);
+        Gizmos.DrawWireSphere(AttackCheck.position, AttackCheckRaduis);
     }
     #endregion
 
@@ -97,7 +101,7 @@ public class Entity : MonoBehaviour
         _facingRight = !_facingRight;
         transform.Rotate(0, 180, 0);
 
-        if(OnFlipped!=null)
+        if (OnFlipped != null)
             OnFlipped();
     }
 
@@ -117,7 +121,7 @@ public class Entity : MonoBehaviour
             return;
 
         Rb.velocity = Vector2.zero;
-    } 
+    }
 
     public void SetVelocity(float xVelocity, float yVelocity)
     {
@@ -141,5 +145,4 @@ public class Entity : MonoBehaviour
     {
 
     }
-
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -66,7 +65,7 @@ public class CrystalSkill : Skill
         CrystalSkillController currentCrystalScript = _currentCrystal.GetComponent<CrystalSkillController>();
 
         currentCrystalScript.SetupCrystal(_crystalDuration, _canExplode, _canMoveToEnemy, _moveSpeed, _growSpeed,
-            _maxSizeCrystalGrow, FindClosestEnemy(_currentCrystal.transform));
+            _maxSizeCrystalGrow, FindClosestEnemy(_currentCrystal.transform), player);
 
     }
 
@@ -89,7 +88,7 @@ public class CrystalSkill : Skill
                 _crystalLeft.Remove(crystalToSpawn);
 
                 newCrystal.GetComponent<CrystalSkillController>().SetupCrystal(_crystalDuration, _canExplode, _canMoveToEnemy,
-                    _moveSpeed, _growSpeed,_maxSizeCrystalGrow,FindClosestEnemy(newCrystal.transform));
+                    _moveSpeed, _growSpeed, _maxSizeCrystalGrow, FindClosestEnemy(newCrystal.transform), player);
 
                 if (_crystalLeft.Count <= 0)
                 {
@@ -109,7 +108,7 @@ public class CrystalSkill : Skill
     {
         int amountToAdd = _amountOfStacks - _crystalLeft.Count;
 
-        for(int i = 0; i< amountToAdd; i++)
+        for (int i = 0; i < amountToAdd; i++)
         {
             _crystalLeft.Add(_crystalPrefab);
         }

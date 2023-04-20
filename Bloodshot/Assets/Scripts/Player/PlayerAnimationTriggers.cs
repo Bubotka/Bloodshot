@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimationTriggers : MonoBehaviour
 {
-    private Player player=>GetComponentInParent<Player>();
+    private Player player => GetComponentInParent<Player>();
 
     private void AnimationTrigger()
     {
@@ -13,9 +11,9 @@ public class PlayerAnimationTriggers : MonoBehaviour
 
     private void AttackTrigger()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(player.AttackCheck.position,player.AttackCheckRaduis);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(player.AttackCheck.position, player.AttackCheckRaduis);
 
-        foreach(var hit in colliders)
+        foreach (var hit in colliders)
         {
             if (hit.GetComponent<Enemy>() != null)
             {

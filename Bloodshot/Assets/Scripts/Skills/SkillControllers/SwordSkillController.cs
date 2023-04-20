@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SwordSkillController : MonoBehaviour
@@ -36,7 +33,7 @@ public class SwordSkillController : MonoBehaviour
     private float _hitCooldown;
 
     private float _spinDirection;
-    private float _swordSpinSpeed=1f;
+    private float _swordSpinSpeed = 1f;
 
     private void Awake()
     {
@@ -125,7 +122,8 @@ public class SwordSkillController : MonoBehaviour
             {
                 _spinTimer -= Time.deltaTime;
 
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + _spinDirection, transform.position.y), _swordSpinSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position,
+                    new Vector2(transform.position.x + _spinDirection, transform.position.y), _swordSpinSpeed * Time.deltaTime);
 
                 if (_spinTimer < 0)
                 {
@@ -200,7 +198,7 @@ public class SwordSkillController : MonoBehaviour
 
     private void SwordSkillDamage(Enemy enemy)
     {
-        enemy.DamageEffect();
+        _player.Stats.DoDamage(enemy.GetComponent<CharacterStats>());
         enemy.StartCoroutine("FreezeTimeFor", _freezeTimeDuration);
     }
 

@@ -270,7 +270,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119722758}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.93050003, y: 0.1663096, z: -15.106059}
+  m_LocalPosition: {x: 0.929821, y: 0.1663096, z: -15.106059}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -981,7 +981,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.93050003, y: 0.1663096, z: -15.106059}
+  m_LocalPosition: {x: 0.929821, y: 0.1663096, z: -15.106059}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6620,6 +6620,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _flashDuration: 0.2
   _hitMat: {fileID: 2100000, guid: bde7ca2dbc24bb84ab4f08a067258ee6, type: 2}
+  _chillColor:
+  - {r: 0.3529412, g: 0.8117647, b: 1, a: 1}
+  - {r: 0.3529412, g: 0.8117647, b: 1, a: 1}
+  _igniteColor:
+  - {r: 1, g: 0.42477328, b: 0, a: 1}
+  - {r: 1, g: 0.62078667, b: 0.34509802, a: 1}
+  _shockColor:
+  - {r: 0.9853692, g: 1, b: 0.6839622, a: 1}
+  - {r: 1, g: 0.88193834, b: 0.4198113, a: 1}
 --- !u!114 &970849244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6645,7 +6654,7 @@ MonoBehaviour:
     _baseValue: 20
     Modifiers: 
   Damage:
-    _baseValue: 5
+    _baseValue: 25
     Modifiers: 
   CritChance:
     _baseValue: 0
@@ -6669,14 +6678,16 @@ MonoBehaviour:
     _baseValue: 0
     Modifiers: 
   IceDamage:
-    _baseValue: 0
+    _baseValue: 3
     Modifiers: 
   LightingDamage:
-    _baseValue: 0
+    _baseValue: 25
     Modifiers: 
   IsIgnited: 0
   IsChilled: 0
   IsShocked: 0
+  _alimentsDuration: 4
+  _shockStrikePrefab: {fileID: 6760084562936390326, guid: af967e25b6c2a604d83769881dd2fd2e, type: 3}
   CurrentHealth: 0
 --- !u!1 &970957998
 GameObject:
@@ -7240,7 +7251,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.734
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7279,6 +7290,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _flashDuration: 0.2
   _hitMat: {fileID: 2100000, guid: bde7ca2dbc24bb84ab4f08a067258ee6, type: 2}
+  _chillColor:
+  - {r: 0.3529412, g: 0.8117647, b: 1, a: 1}
+  - {r: 0.3529412, g: 0.8117647, b: 1, a: 1}
+  _igniteColor:
+  - {r: 1, g: 0.42477328, b: 0, a: 1}
+  - {r: 1, g: 0.62078667, b: 0.34509802, a: 1}
+  _shockColor:
+  - {r: 0.9853692, g: 1, b: 0.6839622, a: 1}
+  - {r: 1, g: 0.88193834, b: 0.4198113, a: 1}
 --- !u!50 &1378998865
 Rigidbody2D:
   serializedVersion: 4
@@ -7343,7 +7363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1378998862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.26, y: -3.2, z: 0}
+  m_LocalPosition: {x: 27.65, y: -3.2, z: 0}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -7381,7 +7401,7 @@ MonoBehaviour:
     _baseValue: 10
     Modifiers: 
   Damage:
-    _baseValue: 5
+    _baseValue: 10
     Modifiers: 
   CritChance:
     _baseValue: 0
@@ -7390,7 +7410,7 @@ MonoBehaviour:
     _baseValue: 0
     Modifiers: 
   MaxHealth:
-    _baseValue: 50
+    _baseValue: 200
     Modifiers: 
   Armor:
     _baseValue: 0
@@ -7413,6 +7433,8 @@ MonoBehaviour:
   IsIgnited: 0
   IsChilled: 0
   IsShocked: 0
+  _alimentsDuration: 4
+  _shockStrikePrefab: {fileID: 6760084562936390326, guid: af967e25b6c2a604d83769881dd2fd2e, type: 3}
   CurrentHealth: 0
 --- !u!70 &1378998869
 CapsuleCollider2D:
@@ -7689,13 +7711,13 @@ MonoBehaviour:
   cooldown: 0
   _cloneDuration: 1.5
   _clonePrefab: {fileID: 1980443048582454151, guid: 923cd39f964f8ec44801f97e27f2f10b, type: 3}
-  _canAttack: 0
-  _createCloneOnDashStart: 0
-  _createCloneOnDashOver: 0
-  _canCreateCloneOnCounterAttack: 0
+  _canAttack: 1
+  _createCloneOnDashStart: 1
+  _createCloneOnDashOver: 1
+  _canCreateCloneOnCounterAttack: 1
   _chanceToDuplicate: 15
   _canDuplicateClone: 1
-  CrystallInsteadOfClone: 1
+  CrystallInsteadOfClone: 0
 --- !u!114 &1568584134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7764,12 +7786,12 @@ MonoBehaviour:
   _crystalDuration: 4
   _crystalPrefab: {fileID: 4020380642570844054, guid: 767329ba1cb5cf840a9bd94b622249ee, type: 3}
   _cloneInsteadOfCrystal: 0
-  _canExplode: 0
+  _canExplode: 1
   _maxSizeCrystalGrow: 2.5
   _growSpeed: 3
-  _canMoveToEnemy: 0
+  _canMoveToEnemy: 1
   _moveSpeed: 3
-  _canUseMultiStacks: 0
+  _canUseMultiStacks: 1
   _amountOfStacks: 3
   _multiStackCooldown: 2
   _useTimeWindow: 0

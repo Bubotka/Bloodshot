@@ -16,7 +16,7 @@ public class SkeletonStunnedState : EnemyState
     {
         base.Enter();
 
-        _enemy.FX.InvokeRepeating("RedColorBlink", 0, 0.1f);
+        _enemy.Fx.InvokeRepeating("RedColorBlink", 0, 0.1f);
 
         stateTimer = _enemy.StunDuration ;
 
@@ -29,7 +29,7 @@ public class SkeletonStunnedState : EnemyState
     {
         base.Exit();
 
-        _enemy.FX.Invoke("CancelRedBlink",0);
+        _enemy.Fx.Invoke("Cancel—olorChange", 0);
     }
 
     public override void Update()
