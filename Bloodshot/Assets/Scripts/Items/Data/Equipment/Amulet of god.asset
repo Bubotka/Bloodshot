@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31c6440bf7bcce644b51d69800a53886, type: 3}
+  m_Name: Amulet of god
+  m_EditorClassIdentifier: 
+  ItemType: 1
+  ItemName: Amulet of god
+  Icon: {fileID: -245851270, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  DropChance: 2.3
+  EquipmentType: 2
+  ItemEffects:
+  - {fileID: 11400000, guid: 7ab08beb7e6e8f24f92363a53fd73a89, type: 2}
+  Strength: 3
+  Agility: 5
+  Intelligence: 10
+  Vitality: 0
+  Damage: 0
+  CritChance: 0
+  CritPower: 0
+  Health: 0
+  Armor: 0
+  Evasion: 0
+  MagicResistance: 15
+  FireDamage: 0
+  IceDamage: 0
+  LightingDamage: 10

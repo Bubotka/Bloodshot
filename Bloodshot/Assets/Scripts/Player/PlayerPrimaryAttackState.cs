@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerPrimaryAttackState : PlayerState
 {
-    private int _comboCounter;
+    public int ComboCounter { get; private set; }
+
     private float _lastTimeAttacked;
     private float _comboWindow=2;
 
@@ -19,17 +20,17 @@ public class PlayerPrimaryAttackState : PlayerState
 
         xInput = 0; //need to fix bug on attack direction
 
-        if (_comboCounter > 2||Time.time >=_lastTimeAttacked+_comboWindow)
-            _comboCounter = 0;
+        if (ComboCounter > 2||Time.time >=_lastTimeAttacked+_comboWindow)
+            ComboCounter = 0;
 
-        player.Anim.SetInteger("ComboCounter", _comboCounter);
+        player.Anim.SetInteger("ComboCounter", ComboCounter);
 
         float attackDir = player.FacingDir;
 
         if (xInput != 0)
             attackDir = xInput;
 
-        player.SetVelocity(player.AttackMovement[_comboCounter].x*attackDir, player.AttackMovement[_comboCounter].y);
+        player.SetVelocity(player.AttackMovement[ComboCounter].x*attackDir, player.AttackMovement[ComboCounter].y);
 
         stateTimer=0.1f;
     }
@@ -40,7 +41,7 @@ public class PlayerPrimaryAttackState : PlayerState
 
         player.StartCoroutine("BusyFor", 0.15f);
 
-        _comboCounter++;
+        ComboCounter++;
 
         _lastTimeAttacked = Time.time;
     }

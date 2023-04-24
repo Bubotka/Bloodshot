@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class SwordSkillController : MonoBehaviour
@@ -160,7 +161,7 @@ public class SwordSkillController : MonoBehaviour
     {
         if (_isBouncing && _enemyTarget.Count > 0)
         {
-            transform.position = Vector2.MoveTowards(transform.position, _enemyTarget[_targetIndex].position, _bounceSpeed * Time.deltaTime);
+            //transform.position = Vector2.MoveTowards(transform.position, _enemyTarget[_targetIndex].position, _bounceSpeed * Time.deltaTime);
 
             if (Vector2.Distance(transform.position, _enemyTarget[_targetIndex].position) < 0.1f)
             {
@@ -200,6 +201,11 @@ public class SwordSkillController : MonoBehaviour
     {
         _player.Stats.DoDamage(enemy.GetComponent<CharacterStats>());
         enemy.StartCoroutine("FreezeTimeFor", _freezeTimeDuration);
+
+        ItemDataEquipment equipedAmulet = PlayerInventory.Instance.GetEquipment(EquipmentType.Amulet);
+
+        if (equipedAmulet != null)
+            equipedAmulet.Effect(enemy.transform); 
     }
 
     private void SetUpTargetsForBounce(Collider2D collision)

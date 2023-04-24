@@ -133,14 +133,6 @@ public class Entity : MonoBehaviour
     }
     #endregion
 
-    public void MakeTransparent(bool transparent)
-    {
-        if (transparent)
-            Sr.color = Color.clear;
-        else
-            Sr.color = Color.white;
-    }
-
     public virtual void Die()
     {
 

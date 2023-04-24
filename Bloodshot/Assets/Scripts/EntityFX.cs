@@ -91,4 +91,12 @@ public class EntityFX : MonoBehaviour
         else
             _sr.color = _chillColor[1];
     }
+
+    public void MakeTransparent(bool transparent)
+    {
+        if (transparent)
+            _sr.color = Color.clear;
+        else
+            _sr.color = Color.white;
+    }
 }
