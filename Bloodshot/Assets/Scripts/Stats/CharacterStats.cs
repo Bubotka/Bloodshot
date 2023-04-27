@@ -1,5 +1,24 @@
 using System;
+using System.Collections;
 using UnityEngine;
+
+public enum StatType
+{
+    Strength,
+    Agility,
+    Intelegence,
+    Vitality,
+    Damage,
+    CritChance,
+    CritPower,
+    Health,
+    Armor,
+    Evasion,
+    MagicRes,
+    FireDamage,
+    IceDamage,
+    LightingDamage
+}
 
 public class CharacterStats : MonoBehaviour
 {
@@ -47,7 +66,9 @@ public class CharacterStats : MonoBehaviour
 
     public event Action HealthChanged;
 
-    public bool IsDead { get; private set; } 
+    public bool IsDead { get; private set; }
+
+    private bool _isVulnerable;
 
     protected virtual void Start()
     {
@@ -76,6 +97,31 @@ public class CharacterStats : MonoBehaviour
 
         if (IsIgnited)
             ApplyIgniteDamage();
+    }
+
+    public void MakeVulnerableFor(float duration)=> StartCoroutine(VelnerableCoroutine(duration));
+
+    private IEnumerator VelnerableCoroutine(float duration)
+    {
+        _isVulnerable = true;
+
+        yield return new WaitForSeconds(duration);
+
+        _isVulnerable = false;
+    }
+
+    public virtual void IncreaseStatBy(int modifier, float duration, Stat statToModify)
+    {
+        StartCoroutine(StatModCoroutine(modifier, duration, statToModify));
+    }
+
+    private IEnumerator StatModCoroutine(int modifier, float duration, Stat statToModify)
+    {
+        statToModify.AddModifier(modifier);
+
+        yield return new WaitForSeconds(duration); 
+
+        statToModify.RemoveModifier(modifier);
     }
 
     public virtual void DoDamage(CharacterStats targetStats)
@@ -108,8 +154,22 @@ public class CharacterStats : MonoBehaviour
             Die();
     }
 
+    public virtual void IncreaseHealthBy(int amount)
+    {
+        CurrentHealth += amount;
+
+        if (CurrentHealth > GetMaxHealthValue())
+            CurrentHealth = GetMaxHealthValue();
+
+        if (HealthChanged != null)
+            HealthChanged();
+    }
+
     protected virtual void DecreaseHealthBy(int damage)
     {
+        if (_isVulnerable)
+            damage = Mathf.RoundToInt(damage * 1.1f);
+
         CurrentHealth -= damage;
 
         if (HealthChanged != null)
@@ -293,6 +353,11 @@ public class CharacterStats : MonoBehaviour
         return false;
     }
 
+    public virtual void OnEvasion()
+    {
+
+    }
+
     private bool TargetCanAvoidAttack(CharacterStats targetStats)
     {
         int totalEvasion = targetStats.Evasion.GetValue() + targetStats.Agility.GetValue();
@@ -302,6 +367,7 @@ public class CharacterStats : MonoBehaviour
 
         if (UnityEngine.Random.Range(0, 100) < totalEvasion)
         {
+            targetStats.OnEvasion();
             return true;
         }
 
@@ -338,5 +404,25 @@ public class CharacterStats : MonoBehaviour
     public int GetMaxHealthValue() => MaxHealth.GetValue() + (Vitality.GetValue() * 5);
 
     #endregion
+
+    public Stat GetStat(StatType statType)
+    {
+        if (statType == StatType.Strength) return Strength;
+        else if (statType == StatType.Agility) return Agility;
+        else if (statType == StatType.Intelegence) return Intelligence;
+        else if (statType == StatType.Vitality) return Vitality;
+        else if (statType == StatType.Damage) return Damage;
+        else if (statType == StatType.CritChance) return CritChance;
+        else if (statType == StatType.CritPower) return CritPower;
+        else if (statType == StatType.Health) return MaxHealth;
+        else if (statType == StatType.Armor) return Armor;
+        else if (statType == StatType.Evasion) return Evasion;
+        else if (statType == StatType.MagicRes) return MagicResistance;
+        else if (statType == StatType.FireDamage) return FireDamage;
+        else if (statType == StatType.IceDamage) return IceDamage;
+        else if (statType == StatType.LightingDamage) return LightingDamage;
+
+        return null;
+    }
 
 }

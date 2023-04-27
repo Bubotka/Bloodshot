@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31c6440bf7bcce644b51d69800a53886, type: 3}
+  m_Name: Healing Flask
+  m_EditorClassIdentifier: 
+  ItemType: 1
+  ItemName: Healing Flask
+  Icon: {fileID: -410334530, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  DropChance: 0
+  EquipmentType: 3
+  ItemCooldown: 5
+  ItemEffects:
+  - {fileID: 11400000, guid: 07352bed0de33974a96aea0573312f28, type: 2}
+  Strength: 0
+  Agility: 0
+  Intelligence: 0
+  Vitality: 0
+  Damage: 0
+  CritChance: 0
+  CritPower: 0
+  Health: 0
+  Armor: 0
+  Evasion: 0
+  MagicResistance: 0
+  FireDamage: 0
+  IceDamage: 0
+  LightingDamage: 0

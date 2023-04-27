@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerStats : CharacterStats
 {
     private Player _player;
@@ -20,5 +22,20 @@ public class PlayerStats : CharacterStats
         _player.Die();
 
         GetComponent<PlayerItemDrop>()?.GenerateDrop();
+    }
+
+    protected override void DecreaseHealthBy(int damage)
+    {
+        base.DecreaseHealthBy(damage);
+
+        ItemDataEquipment currentArmor = PlayerInventory.Instance.GetEquipment(EquipmentType.Armor);
+
+        if (currentArmor != null)
+            currentArmor.Effect(_player.transform);
+    }
+
+    public override void OnEvasion()
+    {
+        _player.Skill.Dodge.CreateMiragenOnDodge();
     }
 }

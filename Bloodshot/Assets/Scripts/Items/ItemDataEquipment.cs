@@ -13,7 +13,11 @@ public class ItemDataEquipment : ItemData
 {
     public EquipmentType EquipmentType;
 
+    [Header ("Unique effect")]
+    public float ItemCooldown;
     public ItemEffect[] ItemEffects;
+    [TextArea]
+    public string ItemEffectDescription;
 
     [Header("Major stats")]
     public int Strength;
@@ -36,6 +40,8 @@ public class ItemDataEquipment : ItemData
     public int FireDamage;
     public int IceDamage;
     public int LightingDamage;
+
+    private int _descriptionLength;
 
     public void Effect(Transform enemyPosition)
     {
@@ -89,5 +95,60 @@ public class ItemDataEquipment : ItemData
         playerStats.FireDamage.RemoveModifier(FireDamage);
         playerStats.IceDamage.RemoveModifier(IceDamage);
         playerStats.LightingDamage.RemoveModifier(LightingDamage);
+    }
+
+    public override string GetDescription()
+    {
+        sb.Length = 0;
+        _descriptionLength = 0;
+
+        AddItemDescription(Strength, "Strength");
+        AddItemDescription(Agility, "Agility");
+        AddItemDescription(Intelligence, "Intelligence");
+        AddItemDescription(Vitality, "Vitality");
+
+        AddItemDescription(Damage, "Damage");
+        AddItemDescription(CritChance, "CritChance");
+        AddItemDescription(CritPower, "CritPower");
+
+        AddItemDescription(Health, "Health");
+        AddItemDescription(Evasion, "Evasion");
+        AddItemDescription(Armor, "Armor");
+        AddItemDescription(MagicResistance, "MagicResistance");
+
+        AddItemDescription(FireDamage, "FireDamage");
+        AddItemDescription(IceDamage, "IceDamage");
+        AddItemDescription(LightingDamage, "LightingDamage");
+
+        if (_descriptionLength < 5)
+        {
+            for (int i = 0; i < 5-_descriptionLength; i++)
+            {
+                sb.AppendLine();
+                sb.Append("");
+            }
+        }
+
+        if (ItemEffectDescription.Length > 0)
+        {
+            sb.AppendLine();
+            sb.AppendLine("Unique: "+ItemEffectDescription);
+        }
+
+        return sb.ToString();
+    }
+
+    private void AddItemDescription(int value,string name)
+    {
+        if(value != 0)
+        {
+            if (sb.Length > 0)
+                sb.AppendLine();
+
+            if (value > 0)
+                sb.Append("+ "+value+" "+name);
+
+            _descriptionLength++;
+        }
     }
 }

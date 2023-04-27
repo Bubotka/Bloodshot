@@ -39,17 +39,18 @@ public class PlayerCounterAttackState : PlayerState
                     stateTimer = 10;
                     player.Anim.SetBool("SuccesfulCounterAttack", true);
 
+                    player.Skill.Parry.UseSkill();
+
                     if (_canCreateClone)
                     {
                         _canCreateClone = false;
-                        player.Skill.Clone.CreateCloneOnCounterAttack(hit.transform);
+                        player.Skill.Parry.MakeMirageOnParry(hit.transform);
                     }
-
                 }
             }
         }
 
-        if (stateTimer < 0 || triggerCalled)
+        if (stateTimer < 0 || triggerCalled) 
             stateMachine.ChangeState(player.IdleState);
     }
 }

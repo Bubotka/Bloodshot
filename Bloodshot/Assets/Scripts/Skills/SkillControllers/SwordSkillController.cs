@@ -161,7 +161,7 @@ public class SwordSkillController : MonoBehaviour
     {
         if (_isBouncing && _enemyTarget.Count > 0)
         {
-            //transform.position = Vector2.MoveTowards(transform.position, _enemyTarget[_targetIndex].position, _bounceSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, _enemyTarget[_targetIndex].position, _bounceSpeed * Time.deltaTime);
 
             if (Vector2.Distance(transform.position, _enemyTarget[_targetIndex].position) < 0.1f)
             {
@@ -199,13 +199,20 @@ public class SwordSkillController : MonoBehaviour
 
     private void SwordSkillDamage(Enemy enemy)
     {
-        _player.Stats.DoDamage(enemy.GetComponent<CharacterStats>());
-        enemy.StartCoroutine("FreezeTimeFor", _freezeTimeDuration);
+        EnemyStats enemyStats = enemy.GetComponent<EnemyStats>();
+
+        _player.Stats.DoDamage(enemyStats);
+
+        if (_player.Skill.Sword.TimeStopUnlocked) 
+            enemy.FreezeTimeFor(_freezeTimeDuration);
+
+        if (_player.Skill.Sword.VolnurableUnlocked)
+            enemyStats.MakeVulnerableFor(_freezeTimeDuration);
 
         ItemDataEquipment equipedAmulet = PlayerInventory.Instance.GetEquipment(EquipmentType.Amulet);
 
         if (equipedAmulet != null)
-            equipedAmulet.Effect(enemy.transform); 
+            equipedAmulet.Effect(enemy.transform);
     }
 
     private void SetUpTargetsForBounce(Collider2D collision)

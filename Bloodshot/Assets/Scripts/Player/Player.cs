@@ -102,10 +102,15 @@ public class Player : Entity
         base.Update();
 
         StateMachine.CurrentState.Update();
+
         CheckForDashInput();
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F)&&Skill.Crystal.CrystalUnlocked)
             Skill.Crystal.CanUseSkill();
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            PlayerInventory.Instance.UseFlask();
+            
     }
 
     public override void SlowEntityBy(float slowPercentage, float slowDuration)
@@ -153,6 +158,9 @@ public class Player : Entity
     private void CheckForDashInput()
     {
         if (IsWallDetected())
+            return;
+
+        if (Skill.Dash.DashUnlocked == false)
             return;
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.Instance.Dash.CanUseSkill())
