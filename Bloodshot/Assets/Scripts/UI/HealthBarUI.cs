@@ -19,20 +19,20 @@ public class HealthBarUI : MonoBehaviour
         _myStats = GetComponentInParent<CharacterStats>();
 
         _entity.OnFlipped += FlipUI;
-        _myStats.HealthChanged += UpdateHealth;
+        _myStats.HealthChanged += UpdateHealthUI;
 
-        UpdateHealth();
+        UpdateHealthUI();
     }
 
     private void OnDisable()
     {
         _entity.OnFlipped -= FlipUI;
-        _myStats.HealthChanged -= UpdateHealth;
+        _myStats.HealthChanged -= UpdateHealthUI;
     }
 
     private void FlipUI()=> _myTransform.Rotate(0, 180, 0);
 
-    private void UpdateHealth()
+    private void UpdateHealthUI()
     {
         _slider.maxValue = _myStats.GetMaxHealthValue();
         _slider.value = _myStats.CurrentHealth;

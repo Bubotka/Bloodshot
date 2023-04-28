@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
+    public float FlaskCooldown { get; private set; }
+
     public static PlayerInventory Instance;
 
     public List<ItemData> StartingItems;
@@ -29,7 +31,6 @@ public class PlayerInventory : MonoBehaviour
     private float _lastTimeUsedFlask;
     private float _lastTimeUsedArmor;
 
-    private float _flaskCooldown;
     private float _armorCooldown;
 
     private void Awake()
@@ -197,11 +198,11 @@ public class PlayerInventory : MonoBehaviour
         if (currentFlask == null)
             return;
 
-        bool canUseFlask = Time.time > _lastTimeUsedFlask + _flaskCooldown;
+        bool canUseFlask = Time.time > _lastTimeUsedFlask + FlaskCooldown;
 
         if (canUseFlask)
         {
-            _flaskCooldown = currentFlask.ItemCooldown;
+            FlaskCooldown = currentFlask.ItemCooldown;
             currentFlask.Effect(null);
             _lastTimeUsedFlask = Time.time;
         }

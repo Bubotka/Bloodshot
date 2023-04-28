@@ -55,7 +55,7 @@ public class StatSlotUI : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
                 _statValueText.text = (playerStats.Evasion.GetValue() + playerStats.Agility.GetValue()).ToString();
 
             if (_statType == StatType.MagicRes)
-                _statValueText.text = (playerStats.MagicResistance.GetValue() + (playerStats.Intelligence.GetValue()*3).ToString());
+                _statValueText.text = (playerStats.MagicResistance.GetValue() + (playerStats.Intelligence.GetValue()*3)).ToString();
 
         }
     }

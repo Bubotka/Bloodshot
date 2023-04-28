@@ -1,0 +1,78 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+
+public class InGameUI : MonoBehaviour
+{
+    [SerializeField] private PlayerStats _playerStats;
+    [SerializeField] private Slider _slider;
+
+    [SerializeField] private Image _dashImage;
+    [SerializeField] private Image _parryImage;
+    [SerializeField] private Image _crystalImage;
+    [SerializeField] private Image _swordImage;
+    [SerializeField] private Image _blackHoleImage;
+    [SerializeField] private Image _flaskImage;
+
+    [SerializeField] private TextMeshProUGUI _currentSouls;
+
+    private SkillManager _skills;
+    private void Start()
+    {
+        if (_playerStats != null) 
+            _playerStats.HealthChanged += UpdateHealthUI;
+
+        _skills = SkillManager.Instance;
+    }
+
+    private void Update() 
+    {
+        _currentSouls.text = PlayerManager.Instance.GetCurrency().ToString("#,#");
+
+        if (Input.GetKeyDown(KeyCode.LeftShift)&&_skills.Dash.DashUnlocked)
+            SetCooldownOf(_dashImage);
+
+        if (Input.GetKeyDown(KeyCode.Q)&&_skills.Parry.ParryUnlocked)
+            SetCooldownOf(_parryImage);
+
+        if (Input.GetKeyDown(KeyCode.F)&&_skills.Crystal.CrystalUnlocked)
+            SetCooldownOf(_crystalImage);
+
+        if (Input.GetKeyDown(KeyCode.Mouse1)&&_skills.Sword.SwordUnlocked)
+            SetCooldownOf(_swordImage);
+
+        if (Input.GetKeyDown(KeyCode.R)&&_skills.Blackhole.BlackHoleUnlocked)
+            SetCooldownOf(_blackHoleImage);
+         
+        if (Input.GetKeyDown(KeyCode.Alpha1)&&PlayerInventory.Instance.GetEquipment(EquipmentType.Flask)!=null)
+            SetCooldownOf(_flaskImage);
+
+        CheckCooldownOf(_dashImage, _skills.Dash.cooldown);
+        CheckCooldownOf(_parryImage, _skills.Parry.cooldown);
+        CheckCooldownOf(_crystalImage, _skills.Crystal.cooldown);
+        CheckCooldownOf(_swordImage, _skills.Sword.cooldown);
+        CheckCooldownOf(_blackHoleImage, _skills.Blackhole.cooldown);
+        CheckCooldownOf(_flaskImage, PlayerInventory.Instance.FlaskCooldown);
+    }
+
+    private void UpdateHealthUI()
+    {
+        _slider.maxValue = _playerStats.GetMaxHealthValue();
+        _slider.value = _playerStats.CurrentHealth;
+    }
+
+    private void SetCooldownOf(Image image)
+    {
+        if (image.fillAmount <= 0)
+            image.fillAmount = 1;
+    } 
+
+    private void CheckCooldownOf(Image image,float cooldown)
+    {
+        if (image.fillAmount > 0)
+            image.fillAmount -= 1 / cooldown * Time.deltaTime;
+    }
+}

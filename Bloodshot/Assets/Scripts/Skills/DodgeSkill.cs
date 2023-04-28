@@ -24,7 +24,7 @@ public class DodgeSkill : Skill
 
     private void UnlockDodge()
     {
-        if (_unlockMirageDodge)
+        if (_unlockMirageDodge&&!DodgeUnlocked)
         {
             player.Stats.Evasion.AddModifier(_evasionAmount);
             PlayerInventory.Instance.UpdateStatsUI();

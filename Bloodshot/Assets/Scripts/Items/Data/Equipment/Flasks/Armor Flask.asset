@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Armor Flask
   m_EditorClassIdentifier: 
   ItemType: 1
-  ItemName: 
+  ItemName: Armor flask
   Icon: {fileID: 1342801878, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
   DropChance: 0
   EquipmentType: 3
@@ -21,6 +21,7 @@ MonoBehaviour:
   ItemEffects:
   - {fileID: 11400000, guid: 6676017f9dd101f4baa08ee21f04821a, type: 2}
   - {fileID: 11400000, guid: 07352bed0de33974a96aea0573312f28, type: 2}
+  ItemEffectDescription: Give 25 armor for 20 sec. and heal.
   Strength: 0
   Agility: 0
   Intelligence: 0

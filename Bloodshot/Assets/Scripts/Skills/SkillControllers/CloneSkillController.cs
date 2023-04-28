@@ -6,6 +6,7 @@ public class CloneSkillController : MonoBehaviour
     [SerializeField] private float _attackCheckRadius = 0.4f;
     [SerializeField] private float _colorLoosingSpeed;
 
+    private float _attackMultiplier;
     private Player _player;
     private SpriteRenderer _sr;
     private float _cloneTimer;
@@ -35,7 +36,8 @@ public class CloneSkillController : MonoBehaviour
         }
     }
 
-    public void SetupClone(Transform newTransform, float cloneDuration, bool canAttack, Vector3 offset, Transform closestEnemy, bool canDuplicate, float chanceToDuplicate, Player player)
+    public void SetupClone(Transform newTransform, float cloneDuration, bool canAttack, 
+        Vector3 offset, Transform closestEnemy, bool canDuplicate, float chanceToDuplicate, Player player, float attackMultiplier)
     {
         if (canAttack)
             _anim.SetInteger("AttackNumber", Random.Range(1, 3));
@@ -46,11 +48,12 @@ public class CloneSkillController : MonoBehaviour
         _closestEnemy = closestEnemy;
         _chanceToDuplicate = chanceToDuplicate;
         _player = player;
-        FaceClosestTarget();
+        _attackMultiplier = attackMultiplier;
+        FaceClosestTarget();  
     }
 
     private void AnimationTrigger()
-    {
+    { 
         _cloneTimer = -0.1f;
     }
 
@@ -62,7 +65,19 @@ public class CloneSkillController : MonoBehaviour
         {
             if (hit.GetComponent<Enemy>() != null)
             {
-                _player.Stats.DoDamage(hit.GetComponent<CharacterStats>());
+                PlayerStats playerStats = _player.GetComponent<PlayerStats>();
+                EnemyStats enemyStats = hit.GetComponent<EnemyStats>();
+
+                playerStats.CloneDoDamage(enemyStats, _attackMultiplier);
+
+                if (_player.Skill.Clone.CanApplyOnHitEffect)
+                {
+
+                    ItemDataEquipment weaponData = PlayerInventory.Instance.GetEquipment(EquipmentType.Weapon);
+
+                    if (weaponData != null)
+                        weaponData.Effect(hit.transform);
+                }
 
                 if (_canDuplicateClone)
                 {

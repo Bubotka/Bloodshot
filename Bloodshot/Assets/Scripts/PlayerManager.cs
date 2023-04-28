@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance;
     public Player Player;
 
-    public int Currency;
+    [SerializeField] private int _currency;
 
     private void Awake()
     {
@@ -19,13 +19,15 @@ public class PlayerManager : MonoBehaviour
 
     public bool HaveEnoughMoney(int price)
     {
-        if (price > Currency)
+        if (price > _currency)
         {
             Debug.Log("Not enough money");
             return false;
         }
 
-        Currency -= price;
+        _currency -= price;
         return true;
-    }
+    } 
+
+    public int GetCurrency() => _currency;
 }
