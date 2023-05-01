@@ -22,6 +22,12 @@ public class DodgeSkill : Skill
         _unlockMirageDodge.GetComponent<Button>().onClick.AddListener(UnlockMirageDodge);
     }
 
+    protected override void CheckUnlock()
+    {
+       // UnlockDodge();
+       // UnlockMirageDodge();
+    }
+
     private void UnlockDodge()
     {
         if (_unlockMirageDodge&&!DodgeUnlocked)

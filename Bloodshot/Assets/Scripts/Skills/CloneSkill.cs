@@ -79,6 +79,14 @@ public class CloneSkill : Skill
     }
     #endregion
 
+    protected override void CheckUnlock()
+    {
+        UnlockAggresiveClone();
+        UnlockCloneAttack();
+        UnlockCrystalInstead();
+        UnlockMultiClone();
+    }
+
     public void CreateClone(Transform clonePosition, Vector3 offset)
     {
         if (CrystallInsteadOfClone)
@@ -102,6 +110,5 @@ public class CloneSkill : Skill
     {
         yield return new WaitForSeconds(0.4f);
         CreateClone(transform, offset);
-
     }
 }

@@ -121,6 +121,16 @@ public class SwordSkill : Skill
 
     #region Unlock region
 
+    protected override void CheckUnlock()
+    {
+        UnlockSword();
+        UnlockBounceSword();
+        UnlockPierceSword();
+        UnlockSpinSword();
+        UnlockTimeStop();
+        UnlockVulnurable();
+    }
+
     private void UnlockTimeStop()
     {
         if (_timeStopUnlockButton.Unlocked)
@@ -129,13 +139,13 @@ public class SwordSkill : Skill
 
     private void UnlockVulnurable()
     {
-        if (_volnurableUnlockButton)
+        if (_volnurableUnlockButton.Unlocked)
             VolnurableUnlocked = true;
     }
 
     private void UnlockSword()
     {
-        if (_swordUnlockButton)
+        if (_swordUnlockButton.Unlocked)
             SwordUnlocked = true;
     }
 
@@ -153,7 +163,7 @@ public class SwordSkill : Skill
 
     private void UnlockSpinSword()
     {
-        if (_spinUnlockButton)
+        if (_spinUnlockButton.Unlocked)
             SwordType = SwordType.Spin;
     }
 

@@ -44,13 +44,14 @@ public class BlackholeSkill : Skill
     protected override void Start()
     {
         base.Start();
+
+        _blackHoleUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockBlackHole);
     }
 
     protected override void Update()
     {
         base.Update();
 
-        _blackHoleUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockBlackHole);
     }
 
     public bool SkillCompleted()
@@ -70,5 +71,10 @@ public class BlackholeSkill : Skill
     public float GetBlackHoleRadius()
     {
         return _maxSize / 2;
+    }
+
+    protected override void CheckUnlock()
+    {
+        UnlockBlackHole();
     }
 }

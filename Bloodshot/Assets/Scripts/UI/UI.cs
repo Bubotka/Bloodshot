@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UI : MonoBehaviour
 {
+    [Header("End screen")]
+    [SerializeField] private FadeScreenUI _fadeScreen;
+    [SerializeField] private GameObject _endText;
+    [Space]
     [SerializeField] private GameObject _characterUI;
     [SerializeField] private GameObject _skillTreeUI;
     [SerializeField] private GameObject _optionsUI;
@@ -17,9 +22,9 @@ public class UI : MonoBehaviour
     {
         SwitchTo(_skillTreeUI);
     }
-     
+
     private void Start()
-    { 
+    {
         SwitchTo(_inGameUI);
 
         ItemToolTip.gameObject.SetActive(false);
@@ -28,9 +33,9 @@ public class UI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I)) 
+        if (Input.GetKeyDown(KeyCode.I))
             SwitchWithKeyTo(_characterUI);
-         
+
         if (Input.GetKeyDown(KeyCode.K))
             SwitchWithKeyTo(_skillTreeUI);
 
@@ -40,9 +45,13 @@ public class UI : MonoBehaviour
 
     public void SwitchTo(GameObject menu)
     {
+
         for (int i = 0; i < transform.childCount; i++)
         {
-            transform.GetChild(i).gameObject.SetActive(false);
+            bool fadeScreen = transform.GetChild(i).GetComponent<FadeScreenUI>() != null;
+
+            if (!fadeScreen)
+                transform.GetChild(i).gameObject.SetActive(false);
         }
 
         if (menu != null)
@@ -55,19 +64,42 @@ public class UI : MonoBehaviour
         {
             menu.SetActive(false);
             CheckForInGameUi();
-            return; 
+            return;
         }
         SwitchTo(menu);
-    }  
+    }
 
     private void CheckForInGameUi()
     {
-        for (int i  = 0; i  < transform.childCount; i ++)
+        for (int i = 0; i < transform.childCount; i++)
         {
-            if (transform.GetChild(i).gameObject.activeSelf)
+            if (transform.GetChild(i).gameObject.activeSelf&&transform.GetChild(i).GetComponent<FadeScreenUI>()==null)
                 return;
         }
 
-        SwitchTo(_inGameUI);  
+        SwitchTo(_inGameUI); 
     }
+
+    public void SwitchOnEndScreen()
+    {
+        _fadeScreen.FadeOut();
+        StartCoroutine(EndScreenCoroutine());
+        StartCoroutine(RestartGameCoroutine());
+    }
+
+    IEnumerator EndScreenCoroutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        _endText.SetActive(true);
+    }
+
+    IEnumerator RestartGameCoroutine()
+    {
+        yield return new WaitForSeconds(2.5f);
+        RestartGame();
+    }
+
+    public void RestartGame() => GameManager._instance.RestartScene();
 }
+ 

@@ -21,6 +21,9 @@ public class PlayerStats : CharacterStats
         base.Die();
         _player.Die();
 
+        GameManager._instance.LostCurrencyAmount = PlayerManager.Instance._currency;
+        PlayerManager.Instance._currency = 0;
+
         GetComponent<PlayerItemDrop>()?.GenerateDrop();
     }
 

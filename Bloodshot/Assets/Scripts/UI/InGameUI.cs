@@ -17,7 +17,10 @@ public class InGameUI : MonoBehaviour
     [SerializeField] private Image _blackHoleImage;
     [SerializeField] private Image _flaskImage;
 
+    [Header("Souls info")]
     [SerializeField] private TextMeshProUGUI _currentSouls;
+    [SerializeField] private float _soulsAmount;
+    [SerializeField] private float _increaseRate=100;
 
     private SkillManager _skills;
     private void Start()
@@ -28,26 +31,26 @@ public class InGameUI : MonoBehaviour
         _skills = SkillManager.Instance;
     }
 
-    private void Update() 
+    private void Update()
     {
-        _currentSouls.text = PlayerManager.Instance.GetCurrency().ToString("#,#");
+        UpdateSoulsUI();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift)&&_skills.Dash.DashUnlocked)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _skills.Dash.DashUnlocked)
             SetCooldownOf(_dashImage);
 
-        if (Input.GetKeyDown(KeyCode.Q)&&_skills.Parry.ParryUnlocked)
+        if (Input.GetKeyDown(KeyCode.Q) && _skills.Parry.ParryUnlocked)
             SetCooldownOf(_parryImage);
 
-        if (Input.GetKeyDown(KeyCode.F)&&_skills.Crystal.CrystalUnlocked)
+        if (Input.GetKeyDown(KeyCode.F) && _skills.Crystal.CrystalUnlocked)
             SetCooldownOf(_crystalImage);
 
-        if (Input.GetKeyDown(KeyCode.Mouse1)&&_skills.Sword.SwordUnlocked)
+        if (Input.GetKeyDown(KeyCode.Mouse1) && _skills.Sword.SwordUnlocked)
             SetCooldownOf(_swordImage);
 
-        if (Input.GetKeyDown(KeyCode.R)&&_skills.Blackhole.BlackHoleUnlocked)
+        if (Input.GetKeyDown(KeyCode.R) && _skills.Blackhole.BlackHoleUnlocked)
             SetCooldownOf(_blackHoleImage);
-         
-        if (Input.GetKeyDown(KeyCode.Alpha1)&&PlayerInventory.Instance.GetEquipment(EquipmentType.Flask)!=null)
+
+        if (Input.GetKeyDown(KeyCode.Alpha1) && PlayerInventory.Instance.GetEquipment(EquipmentType.Flask) != null)
             SetCooldownOf(_flaskImage);
 
         CheckCooldownOf(_dashImage, _skills.Dash.cooldown);
@@ -56,6 +59,16 @@ public class InGameUI : MonoBehaviour
         CheckCooldownOf(_swordImage, _skills.Sword.cooldown);
         CheckCooldownOf(_blackHoleImage, _skills.Blackhole.cooldown);
         CheckCooldownOf(_flaskImage, PlayerInventory.Instance.FlaskCooldown);
+    }
+
+    private void UpdateSoulsUI()
+    {
+        if (_soulsAmount < PlayerManager.Instance.GetCurrency())
+            _soulsAmount += Time.deltaTime * _increaseRate;
+        else
+            _soulsAmount = PlayerManager.Instance.GetCurrency();
+
+        _currentSouls.text = ((int)_soulsAmount).ToString();
     }
 
     private void UpdateHealthUI()

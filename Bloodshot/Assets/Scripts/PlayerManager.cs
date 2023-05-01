@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour,  ISaveManager
 {
     public static PlayerManager Instance;
     public Player Player;
 
-    [SerializeField] private int _currency;
+    public int _currency;
 
     private void Awake()
     {
@@ -30,4 +30,14 @@ public class PlayerManager : MonoBehaviour
     } 
 
     public int GetCurrency() => _currency;
+
+    public void LoadData(GameData data)
+    {
+        _currency = data.Currency;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.Currency = _currency;
+    }
 }
