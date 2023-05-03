@@ -422,3 +422,49 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 724.998601 seconds.
+  path: Assets/Graphics/FX/Void_Backlight/renwubaij_2.png
+  artifactKey: Guid(d4b105e46a065154db97ffba36b59018) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight/renwubaij_2.png using Guid(d4b105e46a065154db97ffba36b59018) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17d879409e627a4bc237a9736606edda') in 0.147749 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Graphics/FX/Void_Backlight/renwubaij_8.png
+  artifactKey: Guid(d8410b5183f3f4f459f4643a8d4fdf26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight/renwubaij_8.png using Guid(d8410b5183f3f4f459f4643a8d4fdf26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9b64571ced6d7a694ba21831e9858c3') in 0.073740 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Graphics/FX/Void_Backlight/renwubaij_20.png
+  artifactKey: Guid(277b82bd2ab46e240ab2fcbdd18ff279) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight/renwubaij_20.png using Guid(277b82bd2ab46e240ab2fcbdd18ff279) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82b952413276827dc28803d58251390f') in 0.063279 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Graphics/FX/Void_Backlight/renwubaij_14.png
+  artifactKey: Guid(f0cffcd9ce7066e4a836547161338bfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight/renwubaij_14.png using Guid(f0cffcd9ce7066e4a836547161338bfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58dbbb523abdf950e86786f2d663da51') in 0.059781 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Graphics/FX/Void_Backlight/renwubaij_28.png
+  artifactKey: Guid(2fa0758a560995b47be88c80e0df9ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight/renwubaij_28.png using Guid(2fa0758a560995b47be88c80e0df9ddd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e7341814291767b421ab70d559eb168') in 0.056350 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Graphics/FX/Void_Backlight/renwubaij_12.png
+  artifactKey: Guid(5c1c5609474696743b45cae65eee5711) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight/renwubaij_12.png using Guid(5c1c5609474696743b45cae65eee5711) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31a9c5676d4de1422e09c693e4bb1aa0') in 0.055106 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Graphics/FX/Void_Backlight/renwubaij_4.png
+  artifactKey: Guid(4100a999fbe4c284bb1845ba8be0f1c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight/renwubaij_4.png using Guid(4100a999fbe4c284bb1845ba8be0f1c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4eafde5a546800a16c3e3619c73298b4') in 0.069860 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

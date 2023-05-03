@@ -29,6 +29,8 @@ public class Enemy : Entity
     public float AttackCooldown;
     public EnemyStateMachine StateMachine { get; private set; }
 
+    public EntityFX Fx { get; private set; }
+
     public string LastAnimBoolName { get; private set; }
 
     protected override void Awake()
@@ -36,6 +38,13 @@ public class Enemy : Entity
         base.Awake();
         StateMachine = new EnemyStateMachine();
         _defaultMoveSpeed = MoveSpeed;
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        Fx = GetComponent<EntityFX>();
     }
 
     protected override void Update()

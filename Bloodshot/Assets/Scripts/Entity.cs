@@ -9,8 +9,6 @@ public class Entity : MonoBehaviour
 
     public Rigidbody2D Rb { get; private set; }
 
-    public EntityFX Fx { get; private set; }
-
     public SpriteRenderer Sr { get; private set; }
 
     public CharacterStats Stats { get; private set; }
@@ -47,7 +45,6 @@ public class Entity : MonoBehaviour
 
     protected virtual void Start()
     {
-        Fx = GetComponent<EntityFX>();
         Anim = GetComponentInChildren<Animator>();
         Rb = GetComponent<Rigidbody2D>();
         Sr = GetComponentInChildren<SpriteRenderer>();

@@ -16,6 +16,8 @@ public class PlayerCatchSwordState : PlayerState
 
         _sword = player.Sword.transform;
 
+        player.Fx.ScreenShake(player.Fx._shakeSwordImpact);
+
         if (player.transform.position.x > _sword.position.x && player.FacingDir == 1)
             player.Flip();
         else if (player.transform.position.x < _sword.position.x && player.FacingDir == -1)

@@ -1,10 +1,17 @@
+using Cinemachine;
+using JetBrains.Annotations;
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class EntityFX : MonoBehaviour
 {
-    private SpriteRenderer _sr;
+    protected SpriteRenderer _sr;
+    protected Player _player;
+
+    [Header("Pop Up Text")]
+    [SerializeField] private GameObject _popUpTextPrefab;
 
     [Header("Flash FX")]
     [SerializeField] private float _flashDuration;
@@ -21,10 +28,32 @@ public class EntityFX : MonoBehaviour
     [SerializeField] private ParticleSystem _chillFx;
     [SerializeField] private ParticleSystem _shockFx;
 
-    private void Start()
+    [Header("Hit FX")]
+    [SerializeField] private GameObject _hitFx;
+    [SerializeField] private GameObject _critHitFx;
+
+    protected virtual void Start()
     {
         _sr = GetComponentInChildren<SpriteRenderer>();
+        _player = PlayerManager.Instance.Player;
         _originalMat = _sr.material;
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    public void CreatePopUpText(string text)
+    {
+        float randomX = Random.Range(-0.75f, 0.75f);
+        float randomY = Random.Range(0.25f, 0.75f);
+
+        Vector3 positionOffset = new Vector3(randomX, randomY, 0);
+
+        GameObject newText = Instantiate(_popUpTextPrefab, transform.position + positionOffset, Quaternion.identity);
+
+        newText.GetComponent<TextMeshPro>().text = text;
     }
 
     private IEnumerator FlashFX()
@@ -113,5 +142,26 @@ public class EntityFX : MonoBehaviour
             _sr.color = Color.clear;
         else
             _sr.color = Color.white;
+    }
+
+    public void CreatHitFX(Transform target, bool critical)
+    {
+        float ZRotation = Random.Range(-90, 90);
+        float xPosition = Random.Range(-.25f, .25f);
+        float yPosition = Random.Range(-.25f, .25f);
+
+        GameObject hitPrefab = _hitFx;
+
+        if (critical)
+            hitPrefab = _critHitFx;
+
+        GameObject hitFX = Instantiate(hitPrefab, target.position + new Vector3(xPosition, yPosition), Quaternion.identity);
+
+        if (!critical)
+            hitFX.transform.Rotate(new Vector3(0, 0, ZRotation));
+        else
+            hitFX.transform.localScale = new Vector3(GetComponent<Entity>().FacingDir, 1, 1);
+
+        Destroy(hitFX, 0.5f);
     }
 }

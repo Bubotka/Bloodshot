@@ -32,6 +32,8 @@ public class Player : Entity
 
     public GameObject Sword { get; private set; }
 
+    public PlayerFX Fx { get; private set; }
+
     #region States
     public PlayerStateMachine StateMachine { get; private set; }
 
@@ -87,6 +89,8 @@ public class Player : Entity
     protected override void Start()
     {
         base.Start();
+
+        Fx = GetComponent<PlayerFX>();
 
         Skill = SkillManager.Instance;
 

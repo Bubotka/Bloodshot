@@ -31,9 +31,10 @@ public class PlayerStats : CharacterStats
     {
         base.DecreaseHealthBy(damage);
 
-        if (damage > GetMaxHealthValue() * .3f)
+        if (damage > GetMaxHealthValue() * .35f)
         {
-            _player.SetupKnockBackPower(new Vector2(8, 4));
+            _player.SetupKnockBackPower(new Vector2(10, 5));
+            _player.Fx.ScreenShake(_player.Fx._shakeHighDamage);
 
             AudioManager.Instance.PlaySFX(40, null);  
         }

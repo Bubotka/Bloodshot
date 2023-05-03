@@ -494,3 +494,61 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 724.918025 seconds.
+  path: Assets/Graphics/FX/Void_Backlight
+  artifactKey: Guid(2e66d22d7b5d1ec4f8ac1140bec80d1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight using Guid(2e66d22d7b5d1ec4f8ac1140bec80d1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'baa070bcf0b904f3b1a7c84cc88b7f5c') in 0.010526 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.062801 seconds.
+  path: Assets/Graphics/FX/Void_Backlight/renwubaij_0.png
+  artifactKey: Guid(10ab72c7bff26aa4db1c0177bc2cecfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight/renwubaij_0.png using Guid(10ab72c7bff26aa4db1c0177bc2cecfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed02c59666a1a19435bb1657108c5b1d') in 0.144359 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Graphics/FX/Void_Backlight/renwubaij_22.png
+  artifactKey: Guid(8fc4a4b2a63cfef48970ecca08644d77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight/renwubaij_22.png using Guid(8fc4a4b2a63cfef48970ecca08644d77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58ce5ae9baecf9d25735458ee0e8b266') in 0.064539 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Graphics/FX/Void_Backlight/renwubaij_16.png
+  artifactKey: Guid(0c4fb954f24cb9c40899d1ba7530c680) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight/renwubaij_16.png using Guid(0c4fb954f24cb9c40899d1ba7530c680) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f808c3c82c9e24d75685c736b4aae24') in 0.067938 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Graphics/FX/Void_Backlight/renwubaij_26.png
+  artifactKey: Guid(68050f38e2de5074fa243d4bef1dc081) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight/renwubaij_26.png using Guid(68050f38e2de5074fa243d4bef1dc081) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '617f8f8a0431db50ed97b8c00bb21ece') in 0.058896 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Graphics/FX/Void_Backlight/renwubaij_24.png
+  artifactKey: Guid(db900cec022e17e4385647c50c13c054) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight/renwubaij_24.png using Guid(db900cec022e17e4385647c50c13c054) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba90634dc46b8ac995674b4dd4a914bc') in 0.052251 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Graphics/FX/Void_Backlight/renwubaij_10.png
+  artifactKey: Guid(958bde66562256543884ca8f3a507b30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight/renwubaij_10.png using Guid(958bde66562256543884ca8f3a507b30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c87688453b1a3bb130f81a6c1c83a488') in 0.062790 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Graphics/FX/Void_Backlight/renwubaij_18.png
+  artifactKey: Guid(20962e54c30f6704b8fdb76a376bd212) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight/renwubaij_18.png using Guid(20962e54c30f6704b8fdb76a376bd212) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7987236eb53c0ff9115241e0f56497b') in 0.048732 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Graphics/FX/Void_Backlight/renwubaij_6.png
+  artifactKey: Guid(be6bc5c2879afdf45b071c0525b13bf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Graphics/FX/Void_Backlight/renwubaij_6.png using Guid(be6bc5c2879afdf45b071c0525b13bf9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17bf403cb9683f19f3c6642d1e5497c6') in 0.058512 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

@@ -33,7 +33,9 @@ public class Skill : MonoBehaviour
             CooldownTimer = Cooldown;
             return true; 
         }
-        Debug.Log("Cooldown");
+
+        player.Fx.CreatePopUpText("Cooldown");
+
         return false; 
     }
 
