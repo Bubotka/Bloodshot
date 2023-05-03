@@ -29,7 +29,10 @@ public class CheckPoint : MonoBehaviour
 
     public void ActivateCheckpoint()
     {
+        if (ActivationtStatus == false)
+            AudioManager.Instance.PlaySFX(6, transform);
+
         ActivationtStatus = true;
         _anim.SetBool("Active", true);
     }
-} 
+}

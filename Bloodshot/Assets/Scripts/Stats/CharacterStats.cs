@@ -68,6 +68,7 @@ public class CharacterStats : MonoBehaviour
 
     public bool IsDead { get; private set; }
 
+    public bool _isInvicible { get; private set; }
     private bool _isVulnerable;
 
     protected virtual void Start()
@@ -98,6 +99,7 @@ public class CharacterStats : MonoBehaviour
         if (IsIgnited)
             ApplyIgniteDamage();
     }
+    public void MakeInvincible(bool invincible) => _isInvicible = invincible;
 
     public void MakeVulnerableFor(float duration)=> StartCoroutine(VelnerableCoroutine(duration));
 
@@ -129,6 +131,8 @@ public class CharacterStats : MonoBehaviour
         if (TargetCanAvoidAttack(targetStats))
             return;
 
+        targetStats.GetComponent<Entity>().SetupKnockbackDir(transform);
+
         int totalDamage = Damage.GetValue() + Strength.GetValue();
 
         if (CanCrit())
@@ -145,6 +149,9 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void TakeDamage(int damage)
     {
+        if (_isInvicible)
+            return;
+
         DecreaseHealthBy(damage);
 
         GetComponent<Entity>().DamageImpact();
@@ -425,4 +432,9 @@ public class CharacterStats : MonoBehaviour
         return null;
     }
 
+    public void KillEntity()
+    {
+        if (!IsDead)
+            Die();
+    }
 }

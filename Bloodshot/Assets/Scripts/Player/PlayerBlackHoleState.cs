@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBlackHoleState : PlayerState
 {
-    private float _flyTime=0.4f;
+    private float _flyTime = 0.4f;
     private bool _skillUsed;
     private float _defaultGravity;
 
@@ -29,6 +29,8 @@ public class PlayerBlackHoleState : PlayerState
 
         player.Rb.gravityScale = _defaultGravity;
         player.Fx.MakeTransparent(false);
+
+        AudioManager.Instance.PlaySFX(39, player.transform);
     }
 
     public override void Update()
@@ -44,12 +46,14 @@ public class PlayerBlackHoleState : PlayerState
 
             if (!_skillUsed)
             {
-               if( player.Skill.Blackhole.CanUseSkill())
-                _skillUsed = true;
+                if (player.Skill.Blackhole.CanUseSkill())
+                    _skillUsed = true;
             }
         }
 
         if (player.Skill.Blackhole.SkillCompleted())
+        {
             stateMachine.ChangeState(player.AirState);
+        }
     }
 }

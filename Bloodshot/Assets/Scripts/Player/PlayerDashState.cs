@@ -16,6 +16,8 @@ public class PlayerDashState : PlayerState
         player.Skill.Dash.CloneOnDash();
 
         stateTimer = player.DashDuration;
+
+        player.Stats.MakeInvincible(true);
     }
 
     public override void Exit()
@@ -23,8 +25,9 @@ public class PlayerDashState : PlayerState
         base.Exit();
 
         player.Skill.Dash.CloneOnArrival();
-
         player.SetVelocity(0, rb.velocity.y);
+
+        player.Stats.MakeInvincible(false);
     }
 
     public override void Update()

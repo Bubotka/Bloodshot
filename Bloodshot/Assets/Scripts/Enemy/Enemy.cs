@@ -21,10 +21,12 @@ public class Enemy : Entity
 
     [Header("Attack info")]
     public float AttackDistance;
-    public float AttackCooldown;
+    public float MinAttackCooldown;
+    public float MaxAttackCooldown;
 
     [HideInInspector] public float LastTimeAttacked;
 
+    public float AttackCooldown;
     public EnemyStateMachine StateMachine { get; private set; }
 
     public string LastAnimBoolName { get; private set; }

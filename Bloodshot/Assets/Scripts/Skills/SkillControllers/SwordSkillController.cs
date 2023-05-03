@@ -204,14 +204,14 @@ public class SwordSkillController : MonoBehaviour
         _player.Stats.DoDamage(enemyStats);
 
         if (_player.Skill.Sword.TimeStopUnlocked) 
-            enemy.FreezeTimeFor(_freezeTimeDuration);
+            enemy.FreezeTimeFor(_freezeTimeDuration); 
 
         if (_player.Skill.Sword.VolnurableUnlocked)
             enemyStats.MakeVulnerableFor(_freezeTimeDuration);
 
         ItemDataEquipment equipedAmulet = PlayerInventory.Instance.GetEquipment(EquipmentType.Amulet);
 
-        if (equipedAmulet != null)
+        if (equipedAmulet != null) 
             equipedAmulet.Effect(enemy.transform);
     }
 

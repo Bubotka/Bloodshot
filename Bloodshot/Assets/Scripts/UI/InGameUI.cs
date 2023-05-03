@@ -53,11 +53,11 @@ public class InGameUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1) && PlayerInventory.Instance.GetEquipment(EquipmentType.Flask) != null)
             SetCooldownOf(_flaskImage);
 
-        CheckCooldownOf(_dashImage, _skills.Dash.cooldown);
-        CheckCooldownOf(_parryImage, _skills.Parry.cooldown);
-        CheckCooldownOf(_crystalImage, _skills.Crystal.cooldown);
-        CheckCooldownOf(_swordImage, _skills.Sword.cooldown);
-        CheckCooldownOf(_blackHoleImage, _skills.Blackhole.cooldown);
+        CheckCooldownOf(_dashImage, _skills.Dash.Cooldown);
+        CheckCooldownOf(_parryImage, _skills.Parry.Cooldown);
+        CheckCooldownOf(_crystalImage, _skills.Crystal.Cooldown);
+        CheckCooldownOf(_swordImage, _skills.Sword.Cooldown);
+        CheckCooldownOf(_blackHoleImage, _skills.Blackhole.Cooldown);
         CheckCooldownOf(_flaskImage, PlayerInventory.Instance.FlaskCooldown);
     }
 
