@@ -18,6 +18,8 @@ public class EnemySkeleton : Enemy
     public SkeletonDeadState DeadState { get; private set; }
     #endregion 
 
+    private float _sfxTimer;
+    private float _sfxCooldown=15;
 
     protected override void Awake()
     {
@@ -40,6 +42,15 @@ public class EnemySkeleton : Enemy
     protected override void Update()
     {
         base.Update();
+
+        _sfxTimer -= Time.deltaTime;
+
+        if (_sfxTimer <= 0)
+        {
+            AudioManager.Instance.PlaySFX(20,transform);
+
+            _sfxTimer = _sfxCooldown;
+        }
     }
 
     public override bool CanBeStunned()

@@ -136,9 +136,10 @@ GameObject:
   - component: {fileID: 9203287545537473503}
   - component: {fileID: 9203287545537473490}
   - component: {fileID: 9203287545537473489}
-  - component: {fileID: 9203287545537473491}
   - component: {fileID: 9203287545537473492}
   - component: {fileID: 9203287545537473493}
+  - component: {fileID: 970849246}
+  - component: {fileID: 970849247}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -153,7 +154,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9203287545537473502}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.38, y: -2.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -198,7 +199,7 @@ MonoBehaviour:
   - {x: 4, y: 3}
   counterAttackDuration: 0.2
   MoveSpeed: 5
-  JumpForce: 12
+  JumpForce: 14
   SwordReturnImpact: 5
   _dashCooldown: 1
   DashSpeed: 16
@@ -240,38 +241,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &9203287545537473491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9203287545537473502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0b658791af938d43a19470165554810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _popUpTextPrefab: {fileID: 4853935796091882387, guid: 194c9b1c701110d479046f191f839bbe, type: 3}
-  _afterImageCooldown: 0.04
-  _afterImagePrefab: {fileID: 6053952755333731282, guid: 867e957c9d99d0346b2c7f76f03000fb, type: 3}
-  _colorLooseRate: 3
-  _flashDuration: 0.2
-  _hitMat: {fileID: 2100000, guid: bde7ca2dbc24bb84ab4f08a067258ee6, type: 2}
-  _chillColor:
-  - {r: 0.3529412, g: 0.8117647, b: 1, a: 1}
-  - {r: 0.3529412, g: 0.8117647, b: 1, a: 1}
-  _igniteColor:
-  - {r: 1, g: 0.42477328, b: 0, a: 1}
-  - {r: 1, g: 0.62078667, b: 0.34509802, a: 1}
-  _shockColor:
-  - {r: 0.9853692, g: 1, b: 0.6839622, a: 1}
-  - {r: 1, g: 0.88193834, b: 0.4198113, a: 1}
-  _igniteFx: {fileID: 6173629241425470540}
-  _chillFx: {fileID: 6460059194556713658}
-  _shockFx: {fileID: 2106560806227986667}
-  _hitFx: {fileID: 6436563920700216508, guid: 227023edfa3fe6d4a95244b5940ef3aa, type: 3}
-  _critHitFx: {fileID: 1460818607285879865, guid: ea2be10f219949147937210ae9b82c63, type: 3}
 --- !u!114 &9203287545537473492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,19 +263,19 @@ MonoBehaviour:
     _baseValue: 0
     Modifiers: 
   Vitality:
-    _baseValue: 20
+    _baseValue: 5
     Modifiers: 
   Damage:
-    _baseValue: 25
+    _baseValue: 15
     Modifiers: 
   CritChance:
-    _baseValue: 100
+    _baseValue: 15
     Modifiers: 
   CritPower:
     _baseValue: 0
     Modifiers: 
   MaxHealth:
-    _baseValue: 50
+    _baseValue: 200
     Modifiers: 
   Armor:
     _baseValue: 0
@@ -318,7 +287,7 @@ MonoBehaviour:
     _baseValue: 0
     Modifiers: 
   FireDamage:
-    _baseValue: 20
+    _baseValue: 0
     Modifiers: 
   IceDamage:
     _baseValue: 0
@@ -349,6 +318,94 @@ MonoBehaviour:
   _dropPrefab: {fileID: 7470390182786916050, guid: 14a7d4c637eedbf47b5c4f198f6dd68f, type: 3}
   _chanceToLooseItems: 15
   _chanceToLooseMaterials: 35
+--- !u!114 &970849246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9203287545537473502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 2
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &970849247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9203287545537473502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38e03a98c366ee14487d27a898469908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _popUpTextPrefab: {fileID: 4853935796091882387, guid: 194c9b1c701110d479046f191f839bbe, type: 3}
+  _flashDuration: 0.2
+  _hitMat: {fileID: 2100000, guid: bde7ca2dbc24bb84ab4f08a067258ee6, type: 2}
+  _chillColor:
+  - {r: 0.3529412, g: 0.8117647, b: 1, a: 0}
+  - {r: 0.3529412, g: 0.8117647, b: 1, a: 0}
+  _igniteColor:
+  - {r: 1, g: 0.42352942, b: 0, a: 1}
+  - {r: 1, g: 0.61960787, b: 0.34509805, a: 1}
+  _shockColor:
+  - {r: 0.9843137, g: 1, b: 0.68235296, a: 1}
+  - {r: 1, g: 0.88235295, b: 0.41960785, a: 1}
+  _igniteFx: {fileID: 6173629241425470540}
+  _chillFx: {fileID: 6460059194556713658}
+  _shockFx: {fileID: 2106560806227986667}
+  _hitFx: {fileID: 6436563920700216508, guid: 227023edfa3fe6d4a95244b5940ef3aa, type: 3}
+  _critHitFx: {fileID: 1460818607285879865, guid: ea2be10f219949147937210ae9b82c63, type: 3}
+  _afterImageCooldown: 0.04
+  _afterImagePrefab: {fileID: 6053952755333731282, guid: 867e957c9d99d0346b2c7f76f03000fb, type: 3}
+  _colorLooseRate: 1.5
+  _shakeMultiplier: 0.1
+  _shakeSwordImpact: {x: 0.5, y: 1, z: 0}
+  _shakeHighDamage: {x: 2, y: 2, z: 0}
 --- !u!1 &9203287545537623206
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,13 +15,13 @@ MonoBehaviour:
   ItemType: 1
   ItemName: IceNFire
   Icon: {fileID: 1398721256, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
-  DropChance: 5.2
+  ItemId: dea57de7fb18e5a4f89902be6d1f9b88
+  DropChance: 100
   EquipmentType: 0
   ItemCooldown: 0
   ItemEffects:
   - {fileID: 11400000, guid: e11c9c9aa4f334a4f8bc33e159ad75c5, type: 2}
   - {fileID: 11400000, guid: 6879d27f0931b3445b29dbac1e87fe0d, type: 2}
-  ItemEffectDescription: Each 3rd attack you launch ice and fire projectle.
   Strength: 0
   Agility: 0
   Intelligence: 0

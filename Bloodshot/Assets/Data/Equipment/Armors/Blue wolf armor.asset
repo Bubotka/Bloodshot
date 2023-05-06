@@ -15,7 +15,8 @@ MonoBehaviour:
   ItemType: 1
   ItemName: Blue wolf armor
   Icon: {fileID: 288293509, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
-  DropChance: 0
+  ItemId: fc2d6776c4af9eb44962deb4a3f3e138
+  DropChance: 100
   EquipmentType: 1
   ItemCooldown: 60
   ItemEffects:

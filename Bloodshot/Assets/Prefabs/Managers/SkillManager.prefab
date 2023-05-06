@@ -1,0 +1,231 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4713946305165049148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4713946305165049151}
+  - component: {fileID: 4713946305165049145}
+  - component: {fileID: 4713946305165049150}
+  - component: {fileID: 4713946305165049140}
+  - component: {fileID: 4713946305165049144}
+  - component: {fileID: 4713946305165049147}
+  - component: {fileID: 4713946305165049146}
+  - component: {fileID: 4713946305165049141}
+  - component: {fileID: 4713946305165049143}
+  m_Layer: 0
+  m_Name: SkillManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4713946305165049151
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4713946305165049148}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4713946305165049145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4713946305165049148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be838aebb378694fbc57eff1d3087bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4713946305165049150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4713946305165049148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f570e9924af6d343b4631637f95f334, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cooldown: 2
+  CooldownTimer: 0
+  _dashUnlockButton: {fileID: 0}
+  _cloneDashUnclockButton: {fileID: 0}
+  _cloneOnArrivalUnlockButton: {fileID: 0}
+--- !u!114 &4713946305165049140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4713946305165049148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acccb60fb550c43479ad3241bb179869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cooldown: 1
+  CooldownTimer: 0
+  _parryUnlockButton: {fileID: 0}
+  _restoreUnlockButton: {fileID: 0}
+  _restoreHealthPercentage: 0.05
+  _parryWithMirageUnlockButton: {fileID: 0}
+--- !u!114 &4713946305165049144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4713946305165049148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 675c69cb97e40594696b2cad2eca32f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cooldown: 0
+  CooldownTimer: 0
+  _attackMultiplier: 0
+  _cloneDuration: 1.5
+  _clonePrefab: {fileID: 1980443048582454151, guid: 923cd39f964f8ec44801f97e27f2f10b, type: 3}
+  _cloneAttackUnlockButton: {fileID: 0}
+  _cloneAttackMultiplier: 0.3
+  _canAttack: 0
+  _aggressiveCloneUnlockButton: {fileID: 0}
+  _aggresiveCLoneAttackMultiplier: 0.8
+  _multipleUnlockButton: {fileID: 0}
+  _multiCloneAttackMultiplier: 0.75
+  _chanceToDuplicate: 25
+  _canDuplicateClone: 0
+  _crystalInsteadUnlockButton: {fileID: 0}
+  CrystallInsteadOfClone: 0
+--- !u!114 &4713946305165049147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4713946305165049148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05383d5dc955204b9ac7828c873c783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cooldown: 10
+  CooldownTimer: 0
+  SwordType: 0
+  _bounceUnlockButton: {fileID: 0}
+  _bounceAmount: 4
+  _bounceGravity: 2
+  _bounceSpeed: 15
+  _pierceUnlockButton: {fileID: 0}
+  _pierceAmount: 2
+  _pierceGravity: 0
+  _spinUnlockButton: {fileID: 0}
+  _hitCooldown: 0.35
+  _maxTravelDistance: 7
+  _spingDuration: 2
+  _spinGravity: 0
+  _swordUnlockButton: {fileID: 0}
+  _swordPrefab: {fileID: 5930919081933609713, guid: 1f9b1ad83da714a48a61412c17008bc5, type: 3}
+  _launchForce: {x: 17, y: 25}
+  _swordGravity: 0
+  _freezeTimeDuration: 1
+  _returnSpeed: 12
+  _timeStopUnlockButton: {fileID: 0}
+  _volnurableUnlockButton: {fileID: 0}
+  _numberOfDots: 20
+  spaceBetweenDots: 0.07
+  _dotsParent: {fileID: 0}
+  _dotPrefab: {fileID: 8244732074486770684, guid: 8dc485adb0960b84e9fe44b540575809, type: 3}
+--- !u!114 &4713946305165049146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4713946305165049148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ccad047a4e2c04db5a9c7b71d4fa0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cooldown: 60
+  CooldownTimer: 0
+  _blackHoleUnlockButton: {fileID: 0}
+  _amountOfAttacks: 5
+  _cloneCooldown: 0.35
+  _blackHoleDuration: 4
+  _blacholePrefab: {fileID: 7208278449247454484, guid: cc2ecab7ab73bb04cb69d747836557f1, type: 3}
+  _maxSize: 10
+  _growSpeed: 3
+  _shrinkSpeed: 6
+--- !u!114 &4713946305165049141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4713946305165049148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679f79128272a8d4a9a4658b52993eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cooldown: 8
+  CooldownTimer: 0
+  _crystalDuration: 4
+  _crystalPrefab: {fileID: 4020380642570844054, guid: 767329ba1cb5cf840a9bd94b622249ee, type: 3}
+  _unlockCrystalButton: {fileID: 0}
+  _cloneInsteadOfCrystal: 0
+  _unlockCloneInsteadButton: {fileID: 0}
+  _canExplode: 0
+  _maxSizeCrystalGrow: 2.5
+  _growSpeed: 3
+  _unlockExplosiveButton: {fileID: 0}
+  _canMoveToEnemy: 0
+  _moveSpeed: 3
+  _unlockMovingCrystalButton: {fileID: 0}
+  _unlockMultiStackButton: {fileID: 0}
+  _canUseMultiStacks: 0
+  _amountOfStacks: 3
+  _multiStackCooldown: 2
+  _useTimeWindow: 6
+  _crystalLeft:
+  - {fileID: 4020380642570844054, guid: 767329ba1cb5cf840a9bd94b622249ee, type: 3}
+  - {fileID: 4020380642570844054, guid: 767329ba1cb5cf840a9bd94b622249ee, type: 3}
+  - {fileID: 4020380642570844054, guid: 767329ba1cb5cf840a9bd94b622249ee, type: 3}
+--- !u!114 &4713946305165049143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4713946305165049148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bd955e25563bc045ac187535b60a55a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cooldown: 0
+  CooldownTimer: 0
+  _unlockDodgeButton: {fileID: 0}
+  _evasionAmount: 10
+  DodgeUnlocked: 0
+  _unlockMirageDodge: {fileID: 0}
+  MirageDodgeUnlocked: 0

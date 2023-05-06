@@ -24,8 +24,8 @@ public class DodgeSkill : Skill
 
     protected override void CheckUnlock()
     {
-       // UnlockDodge();
-       // UnlockMirageDodge();
+        UnlockDodge();
+        UnlockMirageDodge();
     }
 
     private void UnlockDodge()

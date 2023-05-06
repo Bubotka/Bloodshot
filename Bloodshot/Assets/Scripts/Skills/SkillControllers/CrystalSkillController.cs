@@ -29,6 +29,8 @@ public class CrystalSkillController : MonoBehaviour
         _maxCrystalSize = maxCrystaSize;
         _closestTarget = closestTarget;
         _player = player;
+
+        AudioManager.Instance.PlaySFX(26, transform);
     }
 
     public void ChooseRandomEnemy()
@@ -71,6 +73,7 @@ public class CrystalSkillController : MonoBehaviour
     private void AnimationExplodeEvent()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _cd.radius);
+        AudioManager.Instance.PlaySFX(14, transform);
 
         foreach (var hit in colliders)
         {
@@ -79,6 +82,7 @@ public class CrystalSkillController : MonoBehaviour
                 hit.GetComponent<Entity>().SetupKnockbackDir(transform);
 
                 _player.Stats.DoMagicalDamage(hit.GetComponent<CharacterStats>());
+
 
                 ItemDataEquipment equipedAmulet = PlayerInventory.Instance.GetEquipment(EquipmentType.Amulet);
 

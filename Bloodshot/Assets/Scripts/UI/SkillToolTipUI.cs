@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class SkillToolTipUI : ToolTipUI
+public class SkillToolTipUI : TooltipUI
 {
     [SerializeField] private TextMeshProUGUI _skillText;
     [SerializeField] private TextMeshProUGUI _skillName;

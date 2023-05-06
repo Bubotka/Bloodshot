@@ -23,6 +23,8 @@ public class SkeletonStunnedState : EnemyState
         rb.velocity= new Vector2(-_enemy.FacingDir * _enemy.StunDirection.x, _enemy.StunDirection.y);
 
         _enemy.Invoke("SetZeroVelocity", 0.2f);
+
+        AudioManager.Instance.PlaySFX(44, _enemy.transform);
     }
 
     public override void Exit()

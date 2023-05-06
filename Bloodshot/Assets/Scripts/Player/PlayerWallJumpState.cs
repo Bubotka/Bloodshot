@@ -15,6 +15,8 @@ public class PlayerWallJumpState : PlayerState
 
         stateTimer = 1f;
         player.SetVelocity(5 * -player.FacingDir, player.JumpForce);
+
+        AudioManager.Instance.PlaySFX(18, player.transform);
     }
 
     public override void Exit()

@@ -22,6 +22,8 @@ public class SkeletonBattleState : EnemyState
 
         if (_player.GetComponent<PlayerStats>().IsDead)
             stateMachine.ChangeState(_enemy.MoveState);
+
+        AudioManager.Instance.PlaySFX(41,_enemy.transform);
     }
 
 
@@ -58,6 +60,8 @@ public class SkeletonBattleState : EnemyState
     public override void Exit()
     {
         base.Exit();
+
+        AudioManager.Instance.StopSFX(41);
     }
 
     private bool CanAttack()

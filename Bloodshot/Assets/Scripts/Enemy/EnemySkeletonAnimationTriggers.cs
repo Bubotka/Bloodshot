@@ -13,6 +13,8 @@ public class EnemySkeletonAnimationTriggers : MonoBehaviour
 
     private void AttackTrigger()
     {
+        AudioManager.Instance.PlaySFX(42, _enemy.transform);
+
         Collider2D[] colliders = Physics2D.OverlapCircleAll(_enemy.AttackCheck.position, _enemy.AttackCheckRaduis);
 
         foreach (var hit in colliders)
@@ -22,6 +24,7 @@ public class EnemySkeletonAnimationTriggers : MonoBehaviour
                 PlayerStats target = hit.GetComponent<PlayerStats>();
 
                 _enemy.Stats.DoDamage(target);
+
             }
         }
     }

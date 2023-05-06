@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7524416393624330244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.572, y: -0.147, z: 0}
+  m_LocalPosition: {x: 0.483, y: -0.147, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -640,7 +640,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 7524416394011619183}
   m_HandleRect: {fileID: 0}
@@ -750,7 +750,7 @@ MonoBehaviour:
   knockBackPower: {x: 4, y: 7}
   knockbackDuration: 0.2
   AttackCheck: {fileID: 7524416393624330247}
-  AttackCheckRaduis: 0.58
+  AttackCheckRaduis: 0.62
   _groundCheck: {fileID: 7524416394774312560}
   _groundCheckDistance: 0.55
   _wallCheck: {fileID: 7524416393598947074}
@@ -767,7 +767,7 @@ MonoBehaviour:
   MoveSpeed: 1
   IdleStateDuration: 1.5
   BattleTime: 7
-  AttackDistance: 0.96
+  AttackDistance: 1.01
   MinAttackCooldown: 0.35
   MaxAttackCooldown: 0.55
   LastTimeAttacked: 0
@@ -805,10 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b658791af938d43a19470165554810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _popUpTextPrefab: {fileID: 0}
-  _afterImageCooldown: 0
-  _afterImagePrefab: {fileID: 0}
-  _colorLooseRate: 0
+  _popUpTextPrefab: {fileID: 4853935796091882387, guid: 194c9b1c701110d479046f191f839bbe, type: 3}
   _flashDuration: 0.2
   _hitMat: {fileID: 2100000, guid: bde7ca2dbc24bb84ab4f08a067258ee6, type: 2}
   _chillColor:
@@ -850,7 +847,7 @@ MonoBehaviour:
     _baseValue: 0
     Modifiers: 
   Damage:
-    _baseValue: 50
+    _baseValue: 10
     Modifiers: 
   CritChance:
     _baseValue: 0
@@ -859,7 +856,7 @@ MonoBehaviour:
     _baseValue: 0
     Modifiers: 
   MaxHealth:
-    _baseValue: 300
+    _baseValue: 100
     Modifiers: 
   Armor:
     _baseValue: 0
@@ -886,7 +883,7 @@ MonoBehaviour:
   _shockStrikePrefab: {fileID: 6760084562936390326, guid: af967e25b6c2a604d83769881dd2fd2e, type: 3}
   CurrentHealth: 0
   SoulsDropAmount:
-    _baseValue: 0
+    _baseValue: 100
     Modifiers: 
   _level: 1
   _percantageModifier: 0.35
@@ -918,13 +915,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170669b5f8d01f8478fff1388f9fb74a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _possibleDropOfItems: 2
+  _possibleDropOfItems: 5
   _possibleDrop:
+  - {fileID: 11400000, guid: eccccf106307ee34b9b5ec9ac04fc01b, type: 2}
+  - {fileID: 11400000, guid: e808abdd916718a439f247b53daddacc, type: 2}
   - {fileID: 11400000, guid: 2d109cfe573ff65488a5e99ccba42576, type: 2}
-  - {fileID: 11400000, guid: fb249542fdb1fa74ea2355973c9d2d95, type: 2}
-  - {fileID: 11400000, guid: f4bc031b217d72049bcce0c39a3f4d13, type: 2}
-  - {fileID: 11400000, guid: 1181b59a18e4db24caeb78019fee523c, type: 2}
-  - {fileID: 11400000, guid: c6a0c6d58dfc37b42b681f6d7e685f57, type: 2}
+  - {fileID: 11400000, guid: d7a87ef8715da114da43e8d3be4eba31, type: 2}
+  - {fileID: 11400000, guid: dea57de7fb18e5a4f89902be6d1f9b88, type: 2}
   _dropPrefab: {fileID: 7470390182786916050, guid: 14a7d4c637eedbf47b5c4f198f6dd68f, type: 3}
 --- !u!1001 &7524416393787791692
 PrefabInstance:

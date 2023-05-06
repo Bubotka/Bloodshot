@@ -49,7 +49,8 @@ public class CloneSkillController : MonoBehaviour
         _chanceToDuplicate = chanceToDuplicate;
         _player = player;
         _attackMultiplier = attackMultiplier;
-        FaceClosestTarget();  
+        FaceClosestTarget();
+        AudioManager.Instance.PlaySFX(3, transform);
     }
 
     private void AnimationTrigger()

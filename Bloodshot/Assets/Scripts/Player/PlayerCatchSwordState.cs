@@ -24,11 +24,15 @@ public class PlayerCatchSwordState : PlayerState
             player.Flip();
 
         rb.velocity = new Vector2(player.SwordReturnImpact * -player.FacingDir, rb.velocity.y);
+
+        AudioManager.Instance.PlaySFX(46, player.transform);
     }
 
     public override void Exit()
     {
         base.Exit();
+
+        
 
         player.StartCoroutine("BusyFor", 0.1f);
     }

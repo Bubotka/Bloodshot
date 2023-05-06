@@ -14,8 +14,6 @@ public class EnemyStats : CharacterStats
 
     protected override void Start()
     {
-        SoulsDropAmount.SetDefaultValue(25);
-
         ApplyLevelModifiers();
 
         base.Start();
@@ -60,6 +58,8 @@ public class EnemyStats : CharacterStats
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
+
+        AudioManager.Instance.PlaySFX(43, transform);
     }
 
     protected override void Die()

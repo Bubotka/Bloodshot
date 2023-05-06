@@ -41,6 +41,8 @@ public class SwordSkillController : MonoBehaviour
         _anim = GetComponentInChildren<Animator>();
         _rb = GetComponent<Rigidbody2D>();
         _cd = GetComponent<CircleCollider2D>();
+
+        AudioManager.Instance.PlaySFX(47, transform);
     }
 
     private void DestroyMe()
@@ -96,7 +98,9 @@ public class SwordSkillController : MonoBehaviour
     private void Update()
     {
         if (_canRotate)
+        {
             transform.right = _rb.velocity;
+        }
 
         if (_isReturning)
         {
@@ -203,15 +207,15 @@ public class SwordSkillController : MonoBehaviour
 
         _player.Stats.DoDamage(enemyStats);
 
-        if (_player.Skill.Sword.TimeStopUnlocked) 
-            enemy.FreezeTimeFor(_freezeTimeDuration); 
+        if (_player.Skill.Sword.TimeStopUnlocked)
+            enemy.FreezeTimeFor(_freezeTimeDuration);
 
         if (_player.Skill.Sword.VolnurableUnlocked)
             enemyStats.MakeVulnerableFor(_freezeTimeDuration);
 
         ItemDataEquipment equipedAmulet = PlayerInventory.Instance.GetEquipment(EquipmentType.Amulet);
 
-        if (equipedAmulet != null) 
+        if (equipedAmulet != null)
             equipedAmulet.Effect(enemy.transform);
     }
 
@@ -234,6 +238,7 @@ public class SwordSkillController : MonoBehaviour
 
     private void StuckInto(Collider2D collision)
     {
+
         if (_pierceAmount > 0 && collision.GetComponent<Enemy>() != null)
         {
             _pierceAmount--;

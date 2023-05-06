@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToolTipUI : MonoBehaviour
+public class TooltipUI : MonoBehaviour
 {
     [SerializeField] private float _xLimit=960;
     [SerializeField] private float _yLimit=540;

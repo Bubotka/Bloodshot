@@ -29,8 +29,8 @@ public class SwordSkill : Skill
     [SerializeField] private SkillTreeSlotUI _spinUnlockButton;
     [SerializeField] private float _hitCooldown = 0.35f;
     [SerializeField] private float _maxTravelDistance = 7;
-    [SerializeField] private float _spingDuration=2;
-    [SerializeField] private float _spinGravity=1;
+    [SerializeField] private float _spingDuration = 2;
+    [SerializeField] private float _spinGravity = 1;
 
     [Header("Skill info")]
     [SerializeField] private SkillTreeSlotUI _swordUnlockButton;
@@ -62,18 +62,19 @@ public class SwordSkill : Skill
 
     protected override void Start()
     {
-        base.Start();
 
-        GenerateDots();
+            base.Start();
 
-        SetupGravity();
+            GenerateDots();
 
-        _swordUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockSword);
-        _bounceUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockBounceSword);
-        _pierceUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockPierceSword);
-        _spinUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockSpinSword);
-        _timeStopUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockTimeStop);
-        _volnurableUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockVulnurable);
+            SetupGravity();
+
+            _swordUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockSword);
+            _bounceUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockBounceSword);
+            _pierceUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockPierceSword);
+            _spinUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockSpinSword);
+            _timeStopUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockTimeStop);
+            _volnurableUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockVulnurable);
     }
 
     private void SetupGravity()
@@ -88,6 +89,8 @@ public class SwordSkill : Skill
 
     protected override void Update()
     {
+        base.Update();
+
         if (Input.GetKeyUp(KeyCode.Mouse1))
             _finalDirection = new Vector2(AimDirection().normalized.x * _launchForce.x, AimDirection().normalized.y * _launchForce.y);
 
@@ -100,19 +103,24 @@ public class SwordSkill : Skill
         }
     }
 
+    public override void UseSkill()
+    {
+        base.UseSkill();
+    }
+
     public void CreateSword()
     {
         GameObject newSword = Instantiate(_swordPrefab, player.transform.position, transform.rotation);
         SwordSkillController newSwordScript = newSword.GetComponent<SwordSkillController>();
 
         if (SwordType == SwordType.Bounce)
-            newSwordScript.SetupBounce(true, _bounceAmount,_bounceSpeed);
+            newSwordScript.SetupBounce(true, _bounceAmount, _bounceSpeed);
         else if (SwordType == SwordType.Pierce)
             newSwordScript.SetupPierce(_pierceAmount);
         else if (SwordType == SwordType.Spin)
-            newSwordScript.SetupSpin(true,_maxTravelDistance,_spingDuration,_hitCooldown);
+            newSwordScript.SetupSpin(true, _maxTravelDistance, _spingDuration, _hitCooldown);
 
-        newSwordScript.SetupSword(_finalDirection, _swordGravity, player,_freezeTimeDuration,_returnSpeed);
+        newSwordScript.SetupSword(_finalDirection, _swordGravity, player, _freezeTimeDuration, _returnSpeed);
 
         player.AssignNewSword(newSword);
 
@@ -123,6 +131,7 @@ public class SwordSkill : Skill
 
     protected override void CheckUnlock()
     {
+        
         UnlockSword();
         UnlockBounceSword();
         UnlockPierceSword();

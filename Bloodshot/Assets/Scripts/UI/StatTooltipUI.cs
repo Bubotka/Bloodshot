@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class StatTooltipUI : ToolTipUI
+public class StatTooltipUI : TooltipUI
 {
     [SerializeField] private TextMeshProUGUI _description;
 

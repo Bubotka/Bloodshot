@@ -15,8 +15,10 @@ MonoBehaviour:
   ItemType: 1
   ItemName: VampireSword
   Icon: {fileID: -1944902997, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
-  DropChance: 4.6
+  ItemId: 02a9abed3a57da743ac961ca2588a852
+  DropChance: 100
   EquipmentType: 0
+  ItemCooldown: 0
   ItemEffects:
   - {fileID: 11400000, guid: ee185bc6690e50c47b9dd9e45f5f6ed6, type: 2}
   Strength: 5

@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fileName: Data.SaveProfile
-  _encryptData: 1
+  _encryptData: 0
